@@ -1,0 +1,7 @@
+{
+  "name": "exit-festival-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
