@@ -15,7 +15,7 @@ const StagePageContent = () => {
 
     return (
         <>
-            <IonImg src={"/images/stages/jpeg"} className="img" />
+            <IonImg src={"/images/stages.jpeg"} className="img" />
             {authentication.authenticatedUser && authentication.role === "admin" && <AddStageModal />}
             <StageList stages={stagesContext.stages} />
         </>

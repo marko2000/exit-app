@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Menu from "./components/navigation/Menu";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
+import StagesPage from "./pages/StagesPage";
+import PerformersPage from "./pages/PerformersPage";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -42,6 +44,8 @@ const App: React.FC = () => (
                             <Redirect to="/home"/>
                         </Route>
                         <Route exact path="/home" component={Home}/>
+                        <Route exact path="/stages" component={StagesPage} />
+                        <Route exact path="/performers" component={PerformersPage} />
                         <Route exact path="/registration" component={Registration}/>
                         <Route exact path="/login" component={Login}/>
                     </IonRouterOutlet>
