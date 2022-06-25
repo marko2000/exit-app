@@ -41,7 +41,7 @@ const UpdatePerformerForm: React.FC<{ performer: Performer }> = ({performer}) =>
             surname: surnameRef.current!.value ? surnameRef.current!.value as string : performer.surname,
             image: imageRef.current!.value ? imageRef.current!.value as string : performer.image,
             nick: nickRef.current!.value ? nickRef.current!.value as string : performer.nick,
-            music_genre: genreRef.current!.value ? genreRef.current!.value as string : performer.music_genre,
+            genre: genreRef.current!.value ? genreRef.current!.value as string : performer.genre,
             user_id: authentication.userId ||
                 Math.floor(Math.random() * 10),
         };
@@ -106,7 +106,7 @@ const UpdatePerformerForm: React.FC<{ performer: Performer }> = ({performer}) =>
                                     ref={genreRef}
                                     // onIonChange={(e) => setGenre(e.detail.value!)}
                                     clearInput
-                                    value={performer.music_genre}
+                                    value={performer.genre}
                                 ></IonInput>
                             </IonItem>
 

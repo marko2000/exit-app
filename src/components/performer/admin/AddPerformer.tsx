@@ -32,7 +32,7 @@ const AddPerformer: React.FC<{}> = () => {
             name: nameRef.current!.value! as string,
             surname: surnameRef.current!.value! as string,
             nick: nickRef.current!.value! as string,
-            music_genre: genreRef.current!.value! as string,
+            genre: genreRef.current!.value! as string,
             image: imageRef.current!.value! as string,
             user_id: authentication.userId! as number
         }

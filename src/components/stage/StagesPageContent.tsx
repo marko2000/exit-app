@@ -1,5 +1,5 @@
-import { IonImg } from "@ionic/react";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
+import { IonImg, IonSearchbar } from "@ionic/react";
 import { useStages } from "../../store/StagesContext";
 import StageList from "./StageList";
 import AddStageModal from "./admin/AddStageModal";
@@ -9,6 +9,10 @@ const StagePageContent = () => {
     const stagesContext = useStages();
     const authentication = useAuthentication();
 
+    const [searchCondition, setSearchCondition] = useState("");
+
+    let displayedStages = searchCondition ? stagesContext.stages.filter(stage => stage.name.includes(searchCondition) || stage.sponsor.includes(searchCondition) || stage.location.includes(searchCondition)) : stagesContext.stages
+
     useEffect(() => {
         stagesContext.getAllStages();
     }, []);
@@ -17,7 +21,8 @@ const StagePageContent = () => {
         <>
             <IonImg src={"/images/stages.jpeg"} className="img" />
             {authentication.authenticatedUser && authentication.role === "admin" && <AddStageModal />}
-            <StageList stages={stagesContext.stages} />
+            <IonSearchbar value={searchCondition} onIonChange={e => setSearchCondition(e.detail.value!.trim())} />
+            <StageList stages={displayedStages} />
         </>
     )
 }

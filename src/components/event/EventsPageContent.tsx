@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useEvents } from "../../store/EventsContext";
-import { IonImg } from "@ionic/react";
+import { IonImg, IonSearchbar } from "@ionic/react";
 import EventList from "./EventList";
 import { useAuthentication } from "../../store/AuthenticationContext";
 import AddEventButton from "./admin/AddEventButton";
@@ -9,9 +9,13 @@ const EventsPageContent = () => {
     const eventsContext = useEvents();
     const authentication = useAuthentication();
 
+    const [searchCondition, setSearchCondition] = useState("");
+
+    let displayEvents = searchCondition ? eventsContext.events.filter(events => events.name.includes(searchCondition) || events.stage.name.includes(searchCondition) || events.start.includes(searchCondition)) : eventsContext.events
+
     useEffect(() => {
         eventsContext.getAllEvents();
-    })
+    }, [])
 
     return (
         <>
@@ -19,7 +23,8 @@ const EventsPageContent = () => {
             {authentication.authenticatedUser
                 && authentication.role === 'admin'
                 && <AddEventButton/>}
-            <EventList events={eventsContext.events} />
+            <IonSearchbar value={searchCondition} onIonChange={e => setSearchCondition(e.detail.value!.trim())} />
+            <EventList events={displayEvents} />
         </>
     )
 }

@@ -33,7 +33,7 @@ import {
             {performer.name} {performer.surname}
           </IonLabel>
           <br />
-          <IonLabel>Genre: {performer.music_genre}</IonLabel>
+          <IonLabel>Genre: {performer.genre}</IonLabel>
   
           {authentication.authenticatedUser &&
             authentication.role === "admin" && (

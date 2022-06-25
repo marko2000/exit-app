@@ -86,7 +86,7 @@ export const PerformersProvider: React.FC = (props) => {
                     oldPerformer.name = response.data.name;
                     oldPerformer.nick = response.data.nick;
                     oldPerformer.surname = response.data.surname;
-                    oldPerformer.music_genre = response.data.music_genre;
+                    oldPerformer.genre = response.data.genre;
                     oldPerformer.image = response.data.image;
                 }
                 setPerformers(performers)

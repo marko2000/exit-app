@@ -4,7 +4,7 @@ interface Performer {
     surname: string;
     image: string;
     nick: string;
-    music_genre: string;
+    genre: string;
     user_id: number;
 }
 

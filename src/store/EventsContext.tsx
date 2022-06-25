@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { useAuthentication } from "./AuthenticationContext";
 import Event from "../model/Event";
 import { addEventApi, deleteEventApi, getAllEventsApi, getEventByIdApi, updateEventApi } from "../api/eventsApi";
@@ -30,6 +30,10 @@ export const EventsProvider: React.FC = (props) => {
     const authorizationHeader = authentication.role + " " + authentication.accessToken;
 
     const [events, setEvents] = useState<Array<Event>>();
+
+    useEffect(() => {
+        return () => console.log('cleaner')
+    })
 
     const getAllEvents = () => {
         getAllEventsApi().then(retrievedEvents => {
