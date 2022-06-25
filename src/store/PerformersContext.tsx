@@ -3,7 +3,7 @@ import React, {createContext, useContext, useState} from "react";
 import axios from "axios";
 import { useAuthentication } from "./AuthenticationContext";
 
-const apiUrl = "http://localhost:8000/api/performers"
+const apiUrl = "http://localhost:8080/api/performers"
 
 type PerformersContextType = {
     performers: Array<Performer>;

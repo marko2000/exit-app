@@ -3,7 +3,7 @@ import axios from "axios";
 import {useAuthentication} from "./AuthenticationContext";
 import Stage from "../model/Stage";
 
-const apiUrl = "http://localhost:8000/api/stages";
+const apiUrl = "http://localhost:8080/api/stages";
 
 type StagesContextType = {
     stages: Array<Stage>;

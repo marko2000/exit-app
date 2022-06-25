@@ -17,7 +17,7 @@ import {
   import { useAuthentication } from "../../../store/AuthenticationContext";
   import { useHistory } from "react-router";
 
-  const postStageUrl = "http://127.0.0.1:8000/api/stages";
+  const postStageUrl = "http://127.0.0.1:8080/api/stages";
 
   const AddStage: React.FC<{}> = () => {
     const [name, setName] = useState<string>();

@@ -6,7 +6,11 @@ import Menu from "./components/navigation/Menu";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import StagesPage from "./pages/StagesPage";
+import AddStage from "./components/stage/admin/AddStage";
 import PerformersPage from "./pages/PerformersPage";
+import UpdatePerformerForm from "./components/performer/admin/UpdatePerformerForm";
+import EventsPage from "./pages/event/EventsPage";
+import AddEventPage from "./pages/event/AddEventPage";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -46,8 +50,13 @@ const App: React.FC = () => (
                         <Route exact path="/home" component={Home}/>
                         <Route exact path="/stages" component={StagesPage} />
                         <Route exact path="/performers" component={PerformersPage} />
+                        <Route exact path="/events" component={EventsPage} />
                         <Route exact path="/registration" component={Registration}/>
                         <Route exact path="/login" component={Login}/>
+                        <Route exact path="/stages/add" component={AddStage}/>
+                    <Route exact path="/events/add" component={AddEventPage}/>
+                    <Route exact path="/performers/update/:id" component={UpdatePerformerForm}/>
+                    <Route exact path="/events/update/:id" component={UpdatePerformerForm}/>
                     </IonRouterOutlet>
                 </IonReactRouter>
             </ErrorProvider>
