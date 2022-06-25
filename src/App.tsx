@@ -1,6 +1,8 @@
 import {Redirect, Route} from "react-router-dom";
 import {IonApp, IonRouterOutlet, setupIonicReact} from "@ionic/react";
 import {IonReactRouter} from "@ionic/react-router";
+import { AuthenticationProvider } from "./store/AuthenticationContext";
+import { RequiredVisitorAuthentication } from "./authentication/RequireVisitorAuthentication";
 import Home from "./pages/Home";
 import Menu from "./components/navigation/Menu";
 import Registration from "./pages/Registration";
@@ -11,6 +13,7 @@ import PerformersPage from "./pages/PerformersPage";
 import UpdatePerformerForm from "./components/performer/admin/UpdatePerformerForm";
 import EventsPage from "./pages/event/EventsPage";
 import AddEventPage from "./pages/event/AddEventPage";
+import Tickets from "./pages/Tickets";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -32,7 +35,6 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import "./theme/styles.css";
 import React from "react";
-import {AuthenticationProvider} from "./store/AuthenticationContext";
 import ErrorProvider from "./store/ErrorContext";
 
 setupIonicReact();
@@ -53,10 +55,15 @@ const App: React.FC = () => (
                         <Route exact path="/events" component={EventsPage} />
                         <Route exact path="/registration" component={Registration}/>
                         <Route exact path="/login" component={Login}/>
+                        <RequiredVisitorAuthentication>
+                            <>
+                                <Route exact path="/tickets" component={Tickets} />
+                            </>
+                        </RequiredVisitorAuthentication>
                         <Route exact path="/stages/add" component={AddStage}/>
-                    <Route exact path="/events/add" component={AddEventPage}/>
-                    <Route exact path="/performers/update/:id" component={UpdatePerformerForm}/>
-                    <Route exact path="/events/update/:id" component={UpdatePerformerForm}/>
+                        <Route exact path="/events/add" component={AddEventPage}/>
+                        <Route exact path="/performers/update/:id" component={UpdatePerformerForm}/>
+                        <Route exact path="/events/update/:id" component={UpdatePerformerForm}/>
                     </IonRouterOutlet>
                 </IonReactRouter>
             </ErrorProvider>
