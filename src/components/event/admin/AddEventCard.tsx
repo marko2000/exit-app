@@ -72,7 +72,7 @@ const AddEventCard: React.FC = () => {
           <IonCardContent>
             <IonGrid>
               <IonRow>
-                <IonCol className="add-performe-cCol">
+                <IonCol className="add-performe-col">
                   <IonItem>
                     <IonLabel position="floating">Event name:</IonLabel>
                     <IonInput

@@ -1,15 +1,15 @@
-.toolbarSocial {
+.toolbar-social {
   height: 40px;
   padding-top: inherit;
   display: flex;
   justify-content: space-evenly;
 }
-.socialIcon {
+.social-icon {
   margin-bottom: 10px;
   color: #f7f5ec;
 }
 
-.iconMenu {
+.icon-menu {
   height: 30px;
   width: 30px;
   margin-bottom: 5px;
@@ -18,36 +18,36 @@
   margin-top: 5px;
   padding-right: 0.5em;
 }
-.iconMenuArrow {
+.icon-menu-arrow {
   height: 23px;
   width: 23px;
 }
-#headertitle {
+#headerTitle {
   margin-left: 30px;
   font-size: 30px;
   margin-right: -30px;
 }
 
-.footerSocial {
+.footer-social {
   margin-top: 40px;
   margin-bottom: 20px;
 }
-.socialIconF {
+.social-icon-footer {
   height: 30px;
   width: 30px;
   margin-bottom: 10px;
   padding: 7px;
 }
 
-.registrationForm {
+.registration-form {
   width: 60%;
   margin: 40px;
 }
-.registrationFormInput {
+.registration-form-input {
   padding-bottom: 20px;
   --border-color: var(--ion-color-grey, grey);
 }
-.registrationFormInput:hover {
+.registration-form-input:hover {
   --border-color: var(--ion-color-red, rgb(221, 27, 27));
 }
 #registerBtn {
@@ -62,11 +62,11 @@
   width: 70%;
   margin-left: 20px;
 }
-.loginForm {
+.login-form {
   width: 60%;
   margin: 40px;
 }
-.ticketsGrid {
+.tickets-grid {
   margin-top: 20px;
   margin-bottom: 100px;
 }
@@ -75,12 +75,12 @@
   margin-top: -1em;
   width: 280%;
 }
-.accordionGroup {
+.accordion-group {
   margin-left: 20px;
   margin-right: 20px;
   width: 100%;
 }
-.sideTickets {
+.side-tickets {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -91,13 +91,13 @@
 #ticketStage {
   margin-top: -1em;
 }
-.ticketImage {
+.ticket-image {
   height: 80%;
   width: 70%;
 }
 
 /**Performer card**/
-.performerCard {
+.performer-card {
   padding: 30px 0 40px;
   margin-bottom: 30px;
   background-color: #f7f5ec;
@@ -106,7 +106,7 @@
   position: relative;
 }
 
-.performerCard .picture {
+.performer-card .picture {
   display: inline-block;
   height: 130px;
   width: 130px;
@@ -115,7 +115,7 @@
   position: relative;
 }
 
-.performerCard .picture::before {
+.performer-card .picture::before {
   content: "";
   width: 100%;
   height: 0;
@@ -130,7 +130,7 @@
   transition: all 0.3s linear 0s;
 }
 
-.performerCard .picture .img {
+.performer-card .picture .img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -138,11 +138,11 @@
   transition: all 0.9s ease 0s;
 }
 
-.performerCard:hover .img {
+.performer-card:hover .img {
   border-radius: 50%;
 }
 
-.performerCard .performerName {
+.performer-card .performer-name {
   display: block;
   font-size: xx-large;
   font-weight: bolder;
@@ -150,7 +150,7 @@
   transition: all 0.3s ease 0s;
 }
 
-.performerCard .social {
+.performer-card .social {
   width: 100%;
   padding: 0;
   margin: 0;
@@ -161,25 +161,25 @@
   transition: all 0.5s ease 0s;
 }
 
-.performerCard:hover .social {
+.performer-card:hover .social {
   bottom: 0;
 }
-.performerCard:hover .stageName {
+.performer-card:hover .stage-name {
   font-size: x-large;
   transition: all 0.5s ease 0s;
 }
 
-.performerCard .social .socialtem {
+.performer-card .social .social-item {
   display: inline-block;
 }
-.socialIcon {
+.social-icon {
   height: 30px;
   width: 30px;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.performerCard .social .socialIcon {
+.performer-card .social .social-icon {
   display: block;
   padding: 10px;
   font-size: medium;
@@ -188,29 +188,29 @@
   text-decoration: none;
 }
 
-.performerContent {
+.performer-content {
   margin-top: -90px !important;
   margin-bottom: 30px;
 }
-.socialIcon {
+.social-icon {
   height: 30px;
   width: 30px;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.performerNick {
+.performer-nick {
   font-size: x-large;
   font-weight: bolder;
 }
-.performerName {
+.performer-name {
   font-style: italic;
   margin-bottom: -0.5em;
 }
 
 /*stage card*/
 
-.stageCard {
+.stage-card {
   padding: 30px 0 40px;
   margin-bottom: 30px;
   background-color: #f7f5ec;
@@ -219,7 +219,7 @@
   position: relative;
 }
 
-.stageCard .picture {
+.stage-card .picture {
   display: inline-block;
   height: 130px;
   width: 130px;
@@ -228,7 +228,7 @@
   position: relative;
 }
 
-.stageCard .picture::before {
+.stage-card .picture::before {
   content: "";
   width: 100%;
   height: 0;
@@ -243,7 +243,7 @@
   transition: all 0.3s linear 0s;
 }
 
-.stageCard .picture .img {
+.stage-card .picture .img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -251,11 +251,11 @@
   transition: all 0.9s ease 0s;
 }
 
-.stageCard:hover .img {
+.stage-card:hover .img {
   border-radius: 50%;
 }
 
-.stageCard .stageName {
+.stage-card .stage-name {
   display: block;
   font-size: xx-large;
   font-weight: bolder;
@@ -263,7 +263,7 @@
   transition: all 0.3s ease 0s;
 }
 
-.stageCard .socialStage {
+.stage-card .social-stage {
   width: 100%;
   padding: 0;
   margin: 0;
@@ -274,15 +274,15 @@
   transition: all 0.5s ease 0s;
 }
 
-.stageCard:hover .socialStage {
+.stage-card:hover .social-stage {
   bottom: 0;
 }
-.stageCard:hover .stageName {
+.stage-card:hover .stage-name {
   font-size: x-large;
   transition: all 0.5s ease 0s;
 }
 
-.stageCard .socialStage .socialtem {
+.stage-card .social-stage .social-item {
   display: inline-block;
 }
 .IconStage {
@@ -292,7 +292,7 @@
   margin-right: 20px;
 }
 
-.stageCard .socialStage .IconStage {
+.stage-card .social-stage .icon-stage {
   display: block;
   padding: 10px;
   margin-left: 5px;
@@ -301,19 +301,19 @@
   transition: all 0.3s ease 0s;
   text-decoration: none;
 }
-.stagetabs {
+.stage-tabs {
   color: #f7f5ec !important;
   font-size: 14px;
   margin-left: -30px;
   margin-top: 15px;
 }
-.stagetabsLocation {
+.stage-tabs-location {
   margin-left: -30px;
   color: white;
   margin-top: 12px;
   width: 90px;
 }
-#stagetabsSponsor {
+#stageTabsSponsor {
   margin-right: -0.5em;
 }
 .stageContent {
@@ -322,26 +322,26 @@
 }
 
 /**add performer*/
-.addPerfrmerCard {
+.add-perfrmer-card {
   margin: 20px;
 }
-.addPerformerTitle {
+.add-performer-title {
   margin: 20px;
   margin-bottom: -30px;
 }
 
 /**Admin tables*/
 
-.tableGrid {
+.table-grid {
   border: solid 1px rgb(22, 22, 22);
 }
-.tableName {
+.table-name {
   margin-top: 20px;
 
   font-size: larger;
   font-weight: bolder;
 }
-.tableRowHeader {
+.table-row-header {
   border-bottom: solid 1px rgb(59, 58, 58);
   font-size: smaller;
 }
@@ -351,66 +351,66 @@
   margin-right: 5px;
 }
 
-.updatePerformerCard {
+.update-performer-card {
   margin: 10px;
   height: 90%;
 }
-.updatePerformerTitle {
+.update-performer-title {
   margin-top: 5px;
 }
 
 /**event card**/
-.eventCard .eventName {
+.event-card .event-name {
   display: block;
   font-size: x-large;
   font-weight: bolder;
   text-transform: capitalize;
   transition: all 0.3s ease 0s;
 }
-.eventCard .eventStart {
+.event-card .event-start {
   display: block;
   font-size: large;
   font-style: italic;
   text-transform: capitalize;
   transition: all 0.3s ease 0s;
 }
-.eventCard .stageContent {
+.event-card .stage-content {
   align-items: center;
 }
-.eventtabs {
+.event-tabs {
   color: #f7f5ec !important;
   font-size: 14px;
   margin-left: -23px;
   margin-top: 0px;
 }
-.HomePageTitle {
+.home-page-title {
   margin-top: 1em;
   font-size: xx-large;
   font-weight: bolder;
 }
-.HomePageTitle:hover {
+.home-page-title:hover {
   color: #ec0a0a;
 }
-.HomePageText {
+.home-page-text {
   margin-top: 3em;
 }
-.buttonCloseModal {
+.button-close-modal {
   height: 20%;
 }
 #eventFooter {
   margin-top: -1.5em;
   align-items: center;
 }
-#eventCardbutton {
+#eventCardButton {
   margin-left: -2em;
 }
 
-.contentFooter {
+.content-footer {
   text-align: center;
 
   padding: 20px 0;
 }
-.titleFooter {
+.title-footer {
   color: rgba(184, 184, 184, 0.993);
   font-weight: bold;
   margin-bottom: 2em;
@@ -422,10 +422,10 @@
   margin: 0;
   color: #9a9a9a;
 }
-.contentFooter .footerImg {
+.content-footer .footer-img {
   max-width: 70px;
 }
-.footerRowLogos {
+.footer-row-logos {
   padding: 1em;
   padding-left: 2.5em;
   margin-left: auto;
@@ -433,12 +433,12 @@
 
   float: none;
 }
-.contentFooter .footerSocial {
+.content-footer .footer-social {
   margin-top: -1em;
   max-width: 60px;
   column-gap: 2em;
 }
-.socialIconFooter {
+.social-icon-footer {
   display: block;
   padding: 10px;
   font-size: larger;
@@ -446,7 +446,7 @@
   transition: all 0.3s ease 0s;
   text-decoration: none;
 }
-.footerlinkPages #link {
+.footer-link-pages #link {
   font-weight: bold;
   margin-bottom: 2em;
   letter-spacing: 1px;
@@ -457,13 +457,13 @@
   margin: 0;
   color: #dadada;
 }
-.footerlinkPages {
+.footer-link-pages {
   padding-top: 1em;
 }
 .footer-logo {
   width: 200px;
 }
-.contentFooter .copyright {
+.content-footer .copyright {
   font-family: helveticaw_, Arial, Helvetica, sans-serif;
   text-align: center;
   color: gray;
@@ -472,7 +472,7 @@
   margin: 0 auto;
   line-height: 1.55;
 }
-.contentFooter .copyright a {
+.content-footer .copyright a {
   color: gray;
   border-bottom: 2px solid gray;
   text-decoration: none;
@@ -485,7 +485,7 @@
 }
 
 /***COMMENTS SECTION***/
-.commentsHeader {
+.comments-header {
   margin-bottom: 50px !important;
   border: 1px solid #edeff2;
   border-radius: 2px;
@@ -500,43 +500,43 @@
   font-weight: bold;
 }
 
-.commentUser {
+.comment-user {
   width: 30px;
   height: 30px;
   float: left;
   margin-bottom: 15px;
 }
 
-.commentContent {
+.comment-content {
   margin-left: 20px;
 }
 
-.commentContent .commentInfo {
+.comment-content .comment-info {
   display: inline-block;
   margin-top: -2em;
   margin-bottom: 15px;
 }
 
-.commentName {
+.comment-name {
   font-size: 20px;
   font-family: "Conv_helveticaneuecyr-bold";
 }
 
-.commentUser {
+.comment-user {
   padding-top: 10px;
 }
 
-.commentTime {
+.comment-time {
   text-align: right;
   font-size: 11px;
   color: #b4b7c1;
 }
-#timeIconComm {
+#timeIconComment {
   width: 20px;
   height: 20px;
 }
 
-.commentText {
+.comment-text {
   font-size: 13px;
   line-height: 18px;
   color: #474646;
@@ -545,11 +545,11 @@
   border: 1px solid #edeff2;
   padding: 15px 10px 10px 20px;
 }
-.commentCard {
+.comment-card {
   padding-top: -1em;
   min-width: 90%;
 }
-.addComment .addCommentInput {
+.add-comment .add-comment-input {
   font-size: 13px;
   line-height: 50px;
   font-weight: 400;
@@ -567,7 +567,7 @@
   margin-top: -1em;
 }
 
-.addComment .addCommentInput {
+.add-comment .add-comment-input {
   height: 200px;
   font-size: large;
   color: #252525;
@@ -581,7 +581,7 @@
 .scrollable {
   overflow-y: scroll;
 }
-.commentRate {
+.comment-rate {
   display: flex;
   align-items: center;
   min-height: 10vh;

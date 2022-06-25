@@ -32,32 +32,32 @@ const NavBar: React.FC = () => {
 
   return (
     <div>
-      <IonToolbar color="gradient" className="toolbarSocial">
+      <IonToolbar color="gradient" className="toolbar-social">
         <IonRow slot="end">
-          <a href="https://www.facebook.com/exit.festival" target="_blank">
-            <IonIcon icon={logoFacebook} className="socialIcon"></IonIcon>
+          <a href="https://www.facebook.com/exit.festival" target="_blank" rel="noreferrer">
+            <IonIcon icon={logoFacebook} className="social-icon"></IonIcon>
           </a>
-          <a href="https://www.youtube.com/user/EXITFestivalTV" target="_blank">
+          <a href="https://www.youtube.com/user/EXITFestivalTV" target="_blank" rel="noreferrer">
             {" "}
-            <IonIcon icon={logoYoutube} className="socialIcon"></IonIcon>
+            <IonIcon icon={logoYoutube} className="social-icon"></IonIcon>
           </a>
-          <a href="https://instagram.com/exitfestival" target="_blank">
+          <a href="https://instagram.com/exitfestival" target="_blank" rel="noreferrer">
             {" "}
-            <IonIcon icon={logoInstagram} className="socialIcon"></IonIcon>
+            <IonIcon icon={logoInstagram} className="social-icon"></IonIcon>
           </a>
-          <a href="https://www.tiktok.com/@exit_festival" target="_blank">
+          <a href="https://www.tiktok.com/@exit_festival" target="_blank" rel="noreferrer">
             {" "}
-            <IonIcon icon={logoTiktok} className="socialIcon"></IonIcon>
+            <IonIcon icon={logoTiktok} className="social-icon"></IonIcon>
           </a>
-          <a href="https://www.whatsapp.com" target="_blank">
+          <a href="https://www.whatsapp.com" target="_blank" rel="noreferrer">
             {" "}
-            <IonIcon icon={logoWhatsapp} className="socialIcon"></IonIcon>
+            <IonIcon icon={logoWhatsapp} className="social-icon"></IonIcon>
           </a>
         </IonRow>
       </IonToolbar>
 
       <IonToolbar color="red">
-        <IonTitle size="large" slot="start" id="headertitle">
+        <IonTitle size="large" slot="start" id="headerTitle">
           <IonRouterLink color={"light"} href={"/home"}>
             <b>EXIT</b>
           </IonRouterLink>

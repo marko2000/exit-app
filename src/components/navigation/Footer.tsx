@@ -97,38 +97,38 @@ const Footer: React.FC = () => {
   return (
     <div id="footer">
       <IonToolbar color="grey">
-        <div className="contentFooter">
+        <div className="content-footer">
           <IonText className="titleFooter">Sponsors</IonText>
-          <IonRow className="footerRowLogos">
+          <IonRow className="footer-row-logos">
             {sponsors1.map((image, i) => (
-              <IonCol key={i} className="footerImg">
-                <a href={image.link} target="_blank">
+              <IonCol key={i} className="footer-img">
+                <a href={image.link} target="_blank" rel="noreferrer">
                   <IonImg src={image.src} />
                 </a>
               </IonCol>
             ))}
           </IonRow>
-          <IonRow className="footerRowLogos">
+          <IonRow className="footer-row-logos">
             {sponsors2.map((image, i) => (
-              <IonCol key={i} className="footerImg">
-                <a href={image.link} target="_blank">
+              <IonCol key={i} className="footer-img">
+                <a href={image.link} target="_blank" rel="noreferrer">
                   <IonImg src={image.src} />
                 </a>
               </IonCol>
             ))}
           </IonRow>
-          <IonText className="titleFooter">FOLLOW US</IonText>
-          <IonRow className="footerRowLogos">
+          <IonText className="title-footer">FOLLOW US</IonText>
+          <IonRow className="footer-row-logos">
             {social.map((image, i) => (
-              <IonCol key={i} className="footerSocial">
-                <a href={image.link} target="_blank">
-                  <IonIcon icon={image.src} className="socialIconFooter" />
+              <IonCol key={i} className="footer-social">
+                <a href={image.link} target="_blank" rel="noreferrer">
+                  <IonIcon icon={image.src} className="social-icon-footer" />
                 </a>
               </IonCol>
             ))}
           </IonRow>
-          <IonText className="titleFooter">LINKS</IonText>
-          <IonRow className="footerlinkPages">
+          <IonText className="title-footer">LINKS</IonText>
+          <IonRow className="footer-link-pages">
             <IonCol>
               <IonRouterLink color={"light"} href={"/home"} id="link">
                 <b>HOME</b>

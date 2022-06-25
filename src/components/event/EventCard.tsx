@@ -34,16 +34,16 @@ const EventCard: React.FC<{event: Event}> = ({event}) => {
 
     return (
         <>
-          <IonCard className="stageCard">
+          <IonCard className="stage-card">
             <IonImg src={event.image} className="img"></IonImg>
             <IonCardHeader className="picture">
             </IonCardHeader>
-            <IonCardContent className="stageContent">
+            <IonCardContent className="stage-content">
               <br />
-              <IonLabel className="eventName" color="grey">
+              <IonLabel className="event-name" color="grey">
                 {event.name}
               </IonLabel>
-              <IonLabel className="eventStart" color="grey">
+              <IonLabel className="event-start" color="grey">
                 <b>Starts:</b> {event.start.substring(0, event.start.indexOf("T"))}
               </IonLabel>
     
@@ -57,7 +57,7 @@ const EventCard: React.FC<{event: Event}> = ({event}) => {
                 <IonButton
                   color="white"
                   size="large"
-                  className="buttonCloseModal"
+                  className="button-close-modal"
                   slot="end"
                   onClick={() => {
                     setShowModalPerformers(false);
@@ -85,15 +85,15 @@ const EventCard: React.FC<{event: Event}> = ({event}) => {
                 }}
                 color="grey"
               >
-                <IonIcon icon={peopleOutline} className="iconMenu"></IonIcon>
-                <IonText className="eventtabs">Performers</IonText>
+                <IonIcon icon={peopleOutline} className="icon-menu"></IonIcon>
+                <IonText className="event-tabs">Performers</IonText>
               </IonButton>
     
               <IonModal isOpen={showModalStage}>
                 <IonButton
                   color="white"
                   size="large"
-                  className="buttonCloseModal"
+                  className="button-close-modal"
                   onClick={() => {
                     setShowModalStage(false);
                   }}
@@ -103,8 +103,8 @@ const EventCard: React.FC<{event: Event}> = ({event}) => {
                 <StageCard stage={stage} />
               </IonModal>
               <IonButton onClick={() => setShowModalStage(true)} color="grey">
-                <IonIcon icon={locationOutline} className="iconMenu"></IonIcon>
-                <IonText className="eventtabs">{stage.name}</IonText>
+                <IonIcon icon={locationOutline} className="icon-menu"></IonIcon>
+                <IonText className="event-tabs">{stage.name}</IonText>
               </IonButton>
             </IonRow>
           </IonCard>

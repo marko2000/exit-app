@@ -50,10 +50,10 @@ const Registration: React.FC = () => {
             </IonHeader>
 
             <IonContent fullscreen>
-                <IonImg src={"/images/registration.jpeg"} className="imgTop"></IonImg>
+                <IonImg src={"/images/registration.jpeg"} className="img-top"></IonImg>
 
-                <IonList className="registrationForm" color="grey">
-                    <IonItem className="registrationFormInput">
+                <IonList className="registration-form" color="grey">
+                    <IonItem className="registration-form-input">
                         <IonLabel position="floating">Name</IonLabel>
                         <IonInput
                             value={firstname}
@@ -62,7 +62,7 @@ const Registration: React.FC = () => {
                             color="success"
                         ></IonInput>
                     </IonItem>
-                    <IonItem className="registrationFormInput">
+                    <IonItem className="registration-form-input">
                         <IonLabel position="floating">Lastname</IonLabel>
                         <IonInput
                             value={lastname}
@@ -70,7 +70,7 @@ const Registration: React.FC = () => {
                             clearInput
                         ></IonInput>
                     </IonItem>
-                    <IonItem className="registrationFormInput">
+                    <IonItem className="registration-form-input">
                         <IonLabel position="floating">Username</IonLabel>
                         <IonInput
                             value={userEmail}
@@ -78,7 +78,7 @@ const Registration: React.FC = () => {
                             clearInput
                         ></IonInput>
                     </IonItem>
-                    <IonItem className="registrationFormInput">
+                    <IonItem className="registration-form-input">
                         <IonLabel position="floating">Password</IonLabel>
                         <IonInput
                             type="password"

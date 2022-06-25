@@ -44,15 +44,15 @@ const UpdateStageForm: React.FC<{ stage: Stage }> = ({stage}) => {
 
     };
     return (
-        <IonCard className="updatePerformerCard">
-            <IonCardTitle className="updatePerformerTitle">
+        <IonCard className="update-performer-card">
+            <IonCardTitle className="update-performer-title">
                 <IonToolbar color="grey">Update stage</IonToolbar>
             </IonCardTitle>
 
             <IonCardContent>
                 <IonGrid>
                     <IonRow>
-                        <IonCol className="addPerformerCol">
+                        <IonCol className="add-performer-col">
                             <IonItem>
                                 <IonLabel position="stacked">Stage name:</IonLabel>
                                 <IonInput
@@ -104,7 +104,7 @@ const UpdateStageForm: React.FC<{ stage: Stage }> = ({stage}) => {
                                 ></IonInput>
                             </IonItem>
 
-                            <IonItem className="addPerformerImg">
+                            <IonItem className="add-performer-img">
                                 <IonLabel position="stacked">Image:</IonLabel>
                                 <IonInput
                                     type="text"
@@ -120,7 +120,7 @@ const UpdateStageForm: React.FC<{ stage: Stage }> = ({stage}) => {
                                 type="submit"
                                 onClick={updateStage}
                                 color="grey"
-                                className="addPerformerCard"
+                                className="add-performer-card"
                                 id="updatePerformerButton"
                             >
                                 Update stage

@@ -43,13 +43,13 @@ const Login: React.FC = () => {
         <NavBar />
       </IonHeader>
       <IonContent fullscreen>
-        <IonImg src={"/images/login.jpeg"} className="imgTop"></IonImg>
+        <IonImg src={"/images/login.jpeg"} className="img-top"></IonImg>
 
         <IonGrid>
-          <IonRow className="loginForm">
+          <IonRow className="login-form">
             <IonCol text-center color="grey">
               <IonList>
-                <IonItem className="registrationFormInput">
+                <IonItem className="registration-form-input">
                   <IonLabel position="floating">Username</IonLabel>
                   <IonInput
                     value={username}
@@ -57,7 +57,7 @@ const Login: React.FC = () => {
                     clearInput
                   ></IonInput>
                 </IonItem>
-                <IonItem className="registrationFormInput">
+                <IonItem className="registration-form-input">
                   <IonLabel position="floating">Password</IonLabel>
                   <IonInput
                     type="password"

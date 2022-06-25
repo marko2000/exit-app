@@ -27,7 +27,7 @@ const PerformerCardAdminControls: React.FC<{
             expand={"block"}
             color={"danger"}
           >
-            <IonIcon icon={trash} className="tableIcon" size="medium" />
+            <IonIcon icon={trash} className="table-icon" size="medium" />
             Delete
           </IonButton>
         </IonCol>
@@ -39,7 +39,7 @@ const PerformerCardAdminControls: React.FC<{
           <IonButton
             color="white"
             size="large"
-            className="buttonCloseModal"
+            className="button-close-modal"
             onClick={() => setShowModalUpdate(false)}
           >
             <IonIcon icon={closeCircleOutline} slot="end" color="grey" />
@@ -50,7 +50,7 @@ const PerformerCardAdminControls: React.FC<{
           <IonButton onClick={() => setShowModalUpdate(true)} expand={"block"}>
             <IonIcon
               icon={create}
-              className="tableIcon"
+              className="table-icon"
               color="white"
               size="medium"
             />

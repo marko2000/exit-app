@@ -32,7 +32,7 @@ const Menu: React.FC = () => {
         <IonList>
           <IonMenuToggle auto-hide="false">
             <IonItem button routerLink={"/home"} routerDirection="none">
-              <IonIcon icon={homeOutline} className="iconMenu" slot="start" />
+              <IonIcon icon={homeOutline} className="icon-menu" slot="start" />
               <IonLabel>Home</IonLabel>
             </IonItem>
           </IonMenuToggle>
@@ -40,7 +40,7 @@ const Menu: React.FC = () => {
             <IonItem button routerLink={"/registration"} routerDirection="none">
               <IonIcon
                 icon={personCircleOutline}
-                className="iconMenu"
+                className="icon-menu"
                 slot="start"
               />
               <IonLabel>Registration</IonLabel>
@@ -48,7 +48,7 @@ const Menu: React.FC = () => {
           </IonMenuToggle>
           <IonMenuToggle auto-hide="false">
             <IonItem button routerLink={"/performers"} routerDirection="none">
-              <IonIcon icon={globeOutline} className="iconMenu" slot="start" />
+              <IonIcon icon={globeOutline} className="icon-menu" slot="start" />
               <IonLabel>Performers</IonLabel>
             </IonItem>
           </IonMenuToggle>
@@ -57,7 +57,7 @@ const Menu: React.FC = () => {
             <IonItem button routerLink={"/stages"} routerDirection="none">
               <IonIcon
                 icon={playCircleOutline}
-                className="iconMenu"
+                className="icon-menu"
                 slot="start"
               />
               <IonLabel>Stages</IonLabel>
@@ -65,13 +65,13 @@ const Menu: React.FC = () => {
           </IonMenuToggle>
           <IonMenuToggle auto-hide="false">
             <IonItem button routerLink={"/events"} routerDirection="none">
-              <IonIcon icon={flameOutline} className="iconMenu" slot="start" />
+              <IonIcon icon={flameOutline} className="icon-menu" slot="start" />
               <IonLabel>Events</IonLabel>
             </IonItem>
           </IonMenuToggle>
           <IonMenuToggle auto-hide="false">
             <IonItem button routerLink={"/tickets"} routerDirection="none">
-              <IonIcon icon={ticketOutline} className="iconMenu" slot="start" />
+              <IonIcon icon={ticketOutline} className="icon-menu" slot="start" />
               <IonLabel>Tickets</IonLabel>
             </IonItem>
           </IonMenuToggle>

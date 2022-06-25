@@ -20,7 +20,7 @@ const Home: React.FC = () => {
                 <NavBar/>
             </IonHeader>
 
-            <IonContent fullscreen className="homePage">
+            <IonContent fullscreen className="home-page">
                 <IonSlides pager={true} options={slideOpts}>
                     {[1, 2, 3, 4, 5, 6].map(i => {
                         return (<IonSlide key={i}>
@@ -29,10 +29,10 @@ const Home: React.FC = () => {
 
                     })}
                 </IonSlides>
-                <IonTitle color="grey" className="HomePageTitle">
+                <IonTitle color="grey" className="home-page-title">
                     Exit App
                 </IonTitle>
-                <IonGrid className="HomePageText">
+                <IonGrid className="home-page-text">
                     <IonRow>
                         {/*    here comes counter*/}
                     </IonRow>
