@@ -33,7 +33,7 @@ import {
           <IonLabel>Genre: {performer.genre}</IonLabel>
           </IonCardHeader>
           {authentication.authenticatedUser &&
-            authentication.role === "admin" && (
+            authentication.role === "ROLE_ADMIN" && (
               <PerformerCardAdminControls performer={performer} />
             )}
         <IonRow className="social" color="red">

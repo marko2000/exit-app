@@ -15,7 +15,7 @@ const StageCard: React.FC<{ stage: Stage }> = ({ stage }) => {
                     <IonLabel className="stage-name" color="grey">
                         {stage.name}
                     </IonLabel>
-                    {authentication.authenticatedUser && authentication.role === "admin" && (<StageCardAdminControls stage={stage} />)}
+                    {authentication.authenticatedUser && authentication.role === "ROLE_ADMIN" && (<StageCardAdminControls stage={stage} />)}
                 </IonCardContent>
                 <IonRow className="social-stage" color="red">
                     <div className="stage-info">

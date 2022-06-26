@@ -21,7 +21,7 @@ const PerformersPageContent = () => {
     return (
         <>
             <IonImg src={"/images/performers.jpeg"} />
-            {authentication.authenticatedUser && authentication.role === "admin" && <AddPerformerModal />}
+            {authentication.authenticatedUser && authentication.role === "ROLE_ADMIN" && <AddPerformerModal />}
             <IonSearchbar value={searchCondition} onIonChange={e => setSearchCondition(e.detail.value!.trim())} />
             <PerformerList performers={displayedPerformers} />
             <Footer />

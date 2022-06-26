@@ -22,7 +22,7 @@ const EventsPageContent = () => {
         <>
             <IonImg src={"/images/events.jpeg"} className="img"></IonImg>
             {authentication.authenticatedUser
-                && authentication.role === 'admin'
+                && authentication.role === 'ROLE_ADMIN'
                 && <AddEventButton/>}
             <IonSearchbar value={searchCondition} onIonChange={e => setSearchCondition(e.detail.value!.trim())} />
             <EventList events={displayEvents} />
