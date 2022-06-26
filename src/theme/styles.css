@@ -94,7 +94,7 @@
   width: 70%;
 }
 
-/**Performer card**/
+/* ---------- Performer ---------- */
 .performer-card {
   padding: 0;
   margin-bottom: 30px;
@@ -157,9 +157,6 @@
   transition: all 0.5s ease 0s;
 }
 
-.performer-card:hover .social {
-  bottom: 0;
-}
 .performer-card:hover .stage-name {
   font-size: x-large;
   transition: all 0.5s ease 0s;
@@ -168,6 +165,7 @@
 .performer-card .social .social-item {
   display: inline-block;
 }
+
 .social-icon {
   height: 30px;
   width: 30px;
@@ -188,6 +186,7 @@
   margin-top: -90px !important;
   margin-bottom: 30px;
 }
+
 .social-icon {
   height: 30px;
   width: 30px;
@@ -204,10 +203,9 @@
   margin-bottom: -0.5em;
 }
 
-/*stage card*/
-
+/* ---------- Stage ---------- */
 .stage-card {
-  padding: 30px 0 40px;
+  padding: 0;
   margin-bottom: 30px;
   background-color: #f7f5ec;
   text-align: center;
@@ -219,24 +217,9 @@
   display: inline-block;
   height: 130px;
   width: 130px;
-  margin-bottom: 50px;
+  margin-bottom: 5px;
   z-index: 1;
   position: relative;
-}
-
-.stage-card .picture::before {
-  content: "";
-  width: 100%;
-  height: 0;
-  border-radius: 50%;
-  background-color: #ec0a0a;
-  position: absolute;
-  bottom: 135%;
-  right: 0;
-  left: 0;
-  opacity: 0.9;
-  transform: scale(3);
-  transition: all 0.3s linear 0s;
 }
 
 .stage-card .picture .img {
@@ -247,10 +230,6 @@
   transition: all 0.9s ease 0s;
 }
 
-.stage-card:hover .img {
-  border-radius: 50%;
-}
-
 .stage-card .stage-name {
   display: block;
   font-size: xx-large;
@@ -259,59 +238,45 @@
   transition: all 0.3s ease 0s;
 }
 
-.stage-card .social-stage {
+.social-stage {
+  display: flex;
+  justify-content: space-around;
   width: 100%;
-  padding: 0;
   margin: 0;
   background-color: #252525;
-  position: absolute;
-  bottom: -90px;
-  left: 0;
   transition: all 0.5s ease 0s;
 }
 
-.stage-card:hover .social-stage {
-  bottom: 0;
-}
-.stage-card:hover .stage-name {
-  font-size: x-large;
-  transition: all 0.5s ease 0s;
+.stage-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
 }
 
 .stage-card .social-stage .social-item {
   display: inline-block;
 }
-.IconStage {
-  height: 30px;
-  width: 30px;
-  margin-left: 0px;
-  margin-right: 20px;
-}
 
-.stage-card .social-stage .icon-stage {
+.icon-stage {
   display: block;
-  padding: 10px;
-  margin-left: 5px;
+  width: 25px;
+  height: 25px;
   font-size: medium;
   color: #f7f5ec;
   transition: all 0.3s ease 0s;
   text-decoration: none;
 }
+
 .stage-tabs {
-  color: #f7f5ec !important;
-  font-size: 14px;
-  margin-left: -30px;
-  margin-top: 15px;
+  color: #fff;
+  font-size: 1rem;
 }
-.stage-tabs-location {
-  margin-left: -30px;
-  color: white;
-  margin-top: 12px;
-  width: 90px;
-}
+
 #stageTabsSponsor {
   margin-right: -0.5em;
 }
+
 .stageContent {
   margin-top: -40px !important;
   margin-bottom: 20px;
