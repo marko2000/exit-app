@@ -17,6 +17,7 @@ import NavBar from "../components/navigation/NavBar";
 import {useAuthentication,} from "../store/AuthenticationContext";
 import {useHistory, useLocation} from "react-router-dom";
 import {useError} from "../store/ErrorContext";
+import Footer from "../components/navigation/Footer";
 
 const loginUrl = "http://localhost:8080/auth/login";
 
@@ -42,14 +43,15 @@ const Login: React.FC = () => {
       <IonHeader>
         <NavBar />
       </IonHeader>
-      <IonContent fullscreen>
+
+      <IonContent>
         <IonImg src={"/images/login.jpeg"} className="img-top"></IonImg>
 
-        <IonGrid>
+        {/* <IonGrid>
           <IonRow className="login-form">
-            <IonCol text-center color="grey">
-              <IonList>
-                <IonItem className="registration-form-input">
+            <IonCol text-center color="grey"> */}
+              <IonList className="auth-form">
+                <IonItem className="auth-form-input">
                   <IonLabel position="floating">Username</IonLabel>
                   <IonInput
                     value={username}
@@ -57,7 +59,7 @@ const Login: React.FC = () => {
                     clearInput
                   ></IonInput>
                 </IonItem>
-                <IonItem className="registration-form-input">
+                <IonItem className="auth-form-input">
                   <IonLabel position="floating">Password</IonLabel>
                   <IonInput
                     type="password"
@@ -66,13 +68,14 @@ const Login: React.FC = () => {
                   ></IonInput>
                 </IonItem>
 
-                <IonButton color="grey" id="loginBtn" onClick={login}>
+                <IonButton color="grey" id="loginBtn" className="auth-button-section" onClick={login}>
                   Login!
                 </IonButton>
               </IonList>
-            </IonCol>
+            {/* </IonCol>
           </IonRow>
-        </IonGrid>
+        </IonGrid> */}
+        <Footer />
       </IonContent>
     </IonPage>
   );

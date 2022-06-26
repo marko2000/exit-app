@@ -17,16 +17,16 @@ import {
 } from "ionicons/icons";
 
 const Footer: React.FC = () => {
-  const [mQuery, setMQuery] = React.useState<any>({
-    matches: window.innerWidth > 760,
-  });
+  // const [mQuery, setMQuery] = React.useState<any>({
+  //   matches: window.innerWidth > 760,
+  // });
 
-  useEffect(() => {
-    let mediaQuery = window.matchMedia("(min-width: 760px)");
-    mediaQuery.addListener(setMQuery);
+  // useEffect(() => {
+  //   let mediaQuery = window.matchMedia("(min-width: 760px)");
+  //   mediaQuery.addListener(setMQuery);
 
-    return () => mediaQuery.removeListener(setMQuery);
-  }, []);
+  //   return () => mediaQuery.removeListener(setMQuery);
+  // }, []);
 
   type Item = {
     src: string;
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
     <div id="footer">
       <IonToolbar color="grey">
         <div className="content-footer">
-          <IonText className="titleFooter">Sponsors</IonText>
+          <IonText className="title-footer">Sponsors</IonText>
           <IonRow className="footer-row-logos">
             {sponsors1.map((image, i) => (
               <IonCol key={i} className="footer-img">
@@ -135,11 +135,6 @@ const Footer: React.FC = () => {
               </IonRouterLink>
             </IonCol>
             <IonCol>
-              <IonRouterLink color={"light"} href={"/registration"} id="link">
-                <b>REGISTRATION</b>
-              </IonRouterLink>
-            </IonCol>
-            <IonCol>
               <IonRouterLink color={"light"} href={"/performers"} id="link">
                 <b>PERFORMERS</b>
               </IonRouterLink>
@@ -159,15 +154,17 @@ const Footer: React.FC = () => {
                 <b>TICKETS</b>
               </IonRouterLink>
             </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol size="2.9"></IonCol>
             <IonCol>
+              <IonRouterLink color={"light"} href={"/registration"} id="link">
+                <b>REGISTRATION</b>
+              </IonRouterLink>
+            </IonCol>
+          </IonRow>
+          <IonRow className="footer-logo">
               <IonImg
-                class="footer-logo"
+                class="footer-logo-img"
                 src="https://www.exitfest.org/wp-content/uploads/2021/07/exit-logo-2022.svg"
               />
-            </IonCol>
           </IonRow>
           <IonText className="copyright">
             © 2022 EXIT Team. All rights reserved. By visiting this website you

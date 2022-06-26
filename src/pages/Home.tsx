@@ -29,13 +29,13 @@ const Home: React.FC = () => {
 
                     })}
                 </IonSlides>
-                <IonTitle color="grey" className="home-page-title">
+                {/* <IonTitle color="white" className="home-page-title">
                     Exit App
-                </IonTitle>
+                </IonTitle> */}
                 <IonGrid className="home-page-text">
-                    <IonRow>
-                        {/*    here comes counter*/}
-                    </IonRow>
+                    {/* <IonRow> */}
+                           {/* here comes counter */}
+                    {/* </IonRow> */}
                     <IonRow
                         style={{
                             display: "flex",
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
                     </IonRow>
 
                 </IonGrid>
-                <Footer></Footer>
+                <Footer />
             </IonContent>
         </IonPage>
     );

@@ -20,6 +20,7 @@ import {
   import TicketCard from "../components/shop/TicketCard";
   import { cartOutline, removeCircleOutline } from "ionicons/icons";
   import Ticket from "../model/Ticket";
+  import Footer from "../components/navigation/Footer";
 
   const Tickets: React.FC = () => {
     const group1: Array<Ticket> = [
@@ -181,6 +182,7 @@ import {
             </IonCol>
           </IonRow>
         </IonGrid>
+        <Footer />
       </IonContent>
     </IonPage>
     )

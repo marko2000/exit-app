@@ -4,6 +4,7 @@ import { IonImg, IonSearchbar } from "@ionic/react";
 import EventList from "./EventList";
 import { useAuthentication } from "../../store/AuthenticationContext";
 import AddEventButton from "./admin/AddEventButton";
+import Footer from "../navigation/Footer";
 
 const EventsPageContent = () => {
     const eventsContext = useEvents();
@@ -25,6 +26,7 @@ const EventsPageContent = () => {
                 && <AddEventButton/>}
             <IonSearchbar value={searchCondition} onIonChange={e => setSearchCondition(e.detail.value!.trim())} />
             <EventList events={displayEvents} />
+            <Footer />
         </>
     )
 }

@@ -1,11 +1,5 @@
-.toolbar-social {
-  height: 40px;
-  padding-top: inherit;
-  display: flex;
-  justify-content: space-evenly;
-}
+/* ---------- Header ---------- */
 .social-icon {
-  margin-bottom: 10px;
   color: #f7f5ec;
 }
 
@@ -18,58 +12,62 @@
   margin-top: 5px;
   padding-right: 0.5em;
 }
+
 .icon-menu-arrow {
   height: 23px;
   width: 23px;
 }
+
 #headerTitle {
   margin-left: 30px;
   font-size: 30px;
   margin-right: -30px;
 }
 
-.footer-social {
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-.social-icon-footer {
-  height: 30px;
-  width: 30px;
-  margin-bottom: 10px;
-  padding: 7px;
+/* ---------- Registration and login ---------- */
+.auth-form {
+  margin-top: 20px;
+  width: 60%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.registration-form {
-  width: 60%;
-  margin: 40px;
-}
-.registration-form-input {
-  padding-bottom: 20px;
+.auth-form-input {
   --border-color: var(--ion-color-grey, grey);
 }
-.registration-form-input:hover {
+
+.auth-form-input:hover {
   --border-color: var(--ion-color-red, rgb(221, 27, 27));
 }
+
+.auth-button-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
 #registerBtn {
   width: 60%;
 }
+
 #registerLabel {
   color: lightslategray;
-  margin-left: 30px;
   size: 10px;
+  margin: 10px 0;
 }
+
 #loginBtn {
-  width: 70%;
-  margin-left: 20px;
-}
-.login-form {
   width: 60%;
-  margin: 40px;
 }
+
 .tickets-grid {
   margin-top: 20px;
   margin-bottom: 100px;
 }
+
 #ticketTitle {
   margin-left: -8em;
   margin-top: -1em;
@@ -98,7 +96,7 @@
 
 /**Performer card**/
 .performer-card {
-  padding: 30px 0 40px;
+  padding: 0;
   margin-bottom: 30px;
   background-color: #f7f5ec;
   text-align: center;
@@ -155,8 +153,6 @@
   padding: 0;
   margin: 0;
   background-color: #252525;
-  position: absolute;
-  bottom: -90px;
   left: 0;
   transition: all 0.5s ease 0s;
 }
@@ -405,10 +401,14 @@
   margin-left: -2em;
 }
 
+.footer-social {
+  padding: 0;
+}
+
 .content-footer {
   text-align: center;
-
-  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
 }
 .title-footer {
   color: rgba(184, 184, 184, 0.993);
@@ -416,39 +416,38 @@
   margin-bottom: 2em;
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.4;
   margin: 0;
   color: #9a9a9a;
+  padding: 40px 0 20px 0;
 }
 .content-footer .footer-img {
   max-width: 70px;
+  display: flex;
+  align-items: center;
 }
 .footer-row-logos {
-  padding: 1em;
-  padding-left: 2.5em;
+  display: flex;
+  justify-content: space-around;
   margin-left: auto;
   margin-right: auto;
-
+  width: 100%;
   float: none;
 }
 .content-footer .footer-social {
-  margin-top: -1em;
   max-width: 60px;
-  column-gap: 2em;
 }
 .social-icon-footer {
-  display: block;
-  padding: 10px;
-  font-size: larger;
+  height: 30px;
+  width: 30px;
   color: #f7f5ec;
   transition: all 0.3s ease 0s;
   text-decoration: none;
 }
 .footer-link-pages #link {
   font-weight: bold;
-  margin-bottom: 2em;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 14px;
@@ -457,12 +456,17 @@
   margin: 0;
   color: #dadada;
 }
-.footer-link-pages {
-  padding-top: 1em;
-}
+
 .footer-logo {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.footer-logo-img {
   width: 200px;
 }
+
 .content-footer .copyright {
   font-family: helveticaw_, Arial, Helvetica, sans-serif;
   text-align: center;

@@ -70,7 +70,7 @@ const NavBar: React.FC = () => {
           </IonButtons>
         ) : (
           <>
-            <IonButtons slot="start">
+            <IonButtons>
               <IonButton routerLink={"/stages"}>
                 <b>Stages </b>
               </IonButton>

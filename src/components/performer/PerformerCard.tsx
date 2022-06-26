@@ -1,7 +1,6 @@
 import React from "react";
 import {
     IonCard,
-    IonCardContent,
     IonCardHeader,
     IonCol,
     IonIcon,
@@ -21,10 +20,8 @@ import {
   
     return (
       <IonCard className="performer-card">
-        <IonCardHeader className="picture">
-          <IonImg src={performer.image} className="img"></IonImg>
-        </IonCardHeader>
-        <IonCardContent className="performer-content">
+        <IonImg src={performer.image} className="img" />
+        <IonCardHeader>
           <IonLabel className="performer-nick" color="grey">
             {performer.nick}
           </IonLabel>
@@ -34,12 +31,11 @@ import {
           </IonLabel>
           <br />
           <IonLabel>Genre: {performer.genre}</IonLabel>
-  
+          </IonCardHeader>
           {authentication.authenticatedUser &&
             authentication.role === "admin" && (
               <PerformerCardAdminControls performer={performer} />
             )}
-        </IonCardContent>
         <IonRow className="social" color="red">
           <IonCol>
             <IonIcon icon={logoFacebook} className="social-icon"></IonIcon>

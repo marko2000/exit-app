@@ -36,16 +36,7 @@ const Menu: React.FC = () => {
               <IonLabel>Home</IonLabel>
             </IonItem>
           </IonMenuToggle>
-          <IonMenuToggle auto-hide="false">
-            <IonItem button routerLink={"/registration"} routerDirection="none">
-              <IonIcon
-                icon={personCircleOutline}
-                className="icon-menu"
-                slot="start"
-              />
-              <IonLabel>Registration</IonLabel>
-            </IonItem>
-          </IonMenuToggle>
+          
           <IonMenuToggle auto-hide="false">
             <IonItem button routerLink={"/performers"} routerDirection="none">
               <IonIcon icon={globeOutline} className="icon-menu" slot="start" />
@@ -73,6 +64,16 @@ const Menu: React.FC = () => {
             <IonItem button routerLink={"/tickets"} routerDirection="none">
               <IonIcon icon={ticketOutline} className="icon-menu" slot="start" />
               <IonLabel>Tickets</IonLabel>
+            </IonItem>
+          </IonMenuToggle>
+          <IonMenuToggle auto-hide="false">
+            <IonItem button routerLink={"/registration"} routerDirection="none">
+              <IonIcon
+                icon={personCircleOutline}
+                className="icon-menu"
+                slot="start"
+              />
+              <IonLabel>Registration</IonLabel>
             </IonItem>
           </IonMenuToggle>
         </IonList>

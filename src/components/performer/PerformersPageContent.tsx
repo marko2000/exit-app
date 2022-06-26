@@ -4,6 +4,7 @@ import PerformerList from "./PerformerList";
 import { usePerformers } from "../../store/PerformersContext";
 import AddPerformerModal from "./admin/AddPerformerModal";
 import { useAuthentication } from "../../store/AuthenticationContext";
+import Footer from "../navigation/Footer";
 
 const PerformersPageContent = () => {
     const performersContext = usePerformers();
@@ -23,6 +24,7 @@ const PerformersPageContent = () => {
             {authentication.authenticatedUser && authentication.role === "admin" && <AddPerformerModal />}
             <IonSearchbar value={searchCondition} onIonChange={e => setSearchCondition(e.detail.value!.trim())} />
             <PerformerList performers={displayedPerformers} />
+            <Footer />
         </>
     )
 }

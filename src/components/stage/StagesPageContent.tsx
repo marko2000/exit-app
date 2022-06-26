@@ -4,6 +4,7 @@ import { useStages } from "../../store/StagesContext";
 import StageList from "./StageList";
 import AddStageModal from "./admin/AddStageModal";
 import { useAuthentication } from "../../store/AuthenticationContext";
+import Footer from "../navigation/Footer";
 
 const StagePageContent = () => {
     const stagesContext = useStages();
@@ -23,6 +24,7 @@ const StagePageContent = () => {
             {authentication.authenticatedUser && authentication.role === "admin" && <AddStageModal />}
             <IonSearchbar value={searchCondition} onIonChange={e => setSearchCondition(e.detail.value!.trim())} />
             <StageList stages={displayedStages} />
+            <Footer />
         </>
     )
 }
