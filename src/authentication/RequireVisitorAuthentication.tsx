@@ -6,7 +6,7 @@ export const RequiredVisitorAuthentication: React.FC<{children: JSX.Element}> = 
     const auth = useAuthentication();
     const location = useLocation();
 
-    if(!auth.authenticatedUser || auth.role !== 'visitor')
+    if(!auth.authenticatedUser || auth.role !== 'ROLE_USER')
     return (
         <Redirect to={{
             pathname: "/login",

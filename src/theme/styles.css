@@ -64,20 +64,28 @@
 }
 
 /* ---------- Tickets ---------- */
-#addToCartBtn {
-  padding-left: 15px;
-  margin-top: -1em;
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.tickets-grid {
+.add-to-cart {
   margin-top: 20px;
-  margin-bottom: 100px;
 }
 
-#ticketTitle {
-  margin-left: -8em;
-  margin-top: -1em;
-  width: 280%;
+.tickets-content {
+  margin-top: 20px;
+}
+
+.ticket-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ticket-title {
+  font-size: 17px;
 }
 
 .accordion-group {
@@ -86,9 +94,8 @@
   width: 100%;
 }
 
-.side-tickets {
-  margin-left: 20px;
-  margin-right: 20px;
+.cart {
+  margin: 20px;
 }
 
 #ticketPrice {
@@ -101,8 +108,8 @@
 }
 
 .ticket-image {
-  height: 80%;
-  width: 70%;
+  height: 40px;
+  width: 40px;
 }
 
 /* ---------- Performer ---------- */

@@ -6,7 +6,6 @@ import {
     IonCardContent,
     IonCol,
     IonContent,
-    IonGrid,
     IonHeader,
     IonIcon,
     IonImg,
@@ -27,7 +26,7 @@ import {
         {
             id: 1,
             title: "Regular 4-Day Ticket",
-            img: "/images/tickets/4.jpg",
+            img: "/images/tickets/4.png",
             price: 119
         },
         {
@@ -107,84 +106,81 @@ import {
             <IonHeader>
                 <NavBar />
             </IonHeader>
-        <IonContent fullscreen>
-            <IonImg src={"/images/tickets.jpeg"} className="img-top"></IonImg>
-            <IonGrid className="tickets-grid">
-            <IonRow>
-                <IonCol className="accordion-group">
-                    <IonAccordionGroup>
-                        <IonAccordion value="EntryTickets">
-                  <IonItem slot="header" color="grey">
-                    <IonLabel>Entry tickets</IonLabel>
-                  </IonItem>
-
-                  <IonList slot="content">
+          <IonContent>
+            <IonImg src={"/images/tickets.jpeg"} className="img-top" />
+            <IonRow className="tickets-content">
+              <IonCol className="accordion-group">
+                <IonAccordionGroup>
+                  <IonAccordion value="EntryTickets">
+                    <IonItem slot="header" color="grey">
+                      <IonLabel>Entry tickets</IonLabel>
+                    </IonItem>
+                    <IonList slot="content">
                     {group1.map((t) => (
                       <TicketCard key={t.id} ticket={t} />
                     ))}
-                  </IonList>
-                </IonAccordion>
-                <br />
-                <IonAccordion value="Accommodation">
-                  <IonItem slot="header" color="grey">
-                    <IonLabel>Accommodation</IonLabel>
+                    </IonList>
+                  </IonAccordion>
+                  <br />
+                  <IonAccordion value="Accommodation">
+                    <IonItem slot="header" color="grey">
+                      <IonLabel>Accommodation</IonLabel>
+                    </IonItem>
+                    <IonList slot="content">
+                      {group2.map((t) => (
+                        <TicketCard key={t.id} ticket={t} />
+                      ))}
+                    </IonList>
+                  </IonAccordion>
+                  <br />
+                  <IonAccordion value="Add-onServices">
+                    <IonItem slot="header" color="grey">
+                      <IonLabel>Add-on services</IonLabel>
+                    </IonItem>
+                    <IonList slot="content">
+                      {group3.map((t) => (
+                        <TicketCard key={t.id} ticket={t} />
+                      ))}
+                    </IonList>
+                  </IonAccordion>
+                </IonAccordionGroup>
+              </IonCol>
+              <IonCol>
+                <IonCard className="cart">
+                  <IonItem color="red">
+                    <IonIcon icon={cartOutline} slot="start" />
+                    <IonLabel>Added to cart</IonLabel>
+                    <IonLabel slot="end">Total: 1000</IonLabel>
                   </IonItem>
 
-                  <IonList slot="content">
-                    {group2.map((t) => (
-                      <TicketCard key={t.id} ticket={t} />
-                    ))}
-                  </IonList>
-                </IonAccordion>
-                <br />
-                <IonAccordion value="Add-onServices">
-                  <IonItem slot="header" color="grey">
-                    <IonLabel>Add-on services</IonLabel>
-                  </IonItem>
-
-                  <IonList slot="content">
-                    {group3.map((t) => (
-                      <TicketCard key={t.id} ticket={t} />
-                    ))}
-                  </IonList>
-                </IonAccordion>
-              </IonAccordionGroup>
-            </IonCol>
-            <IonCol className="side-tickets">
-              <IonCard>
-                <IonItem color="red">
-                  <IonIcon icon={cartOutline} slot="start" />
-                  <IonLabel>Added to cart</IonLabel>
-                  <IonLabel slot="end">Total: 1000</IonLabel>
-                </IonItem>
-
-                <IonCardContent>
-                  <IonList>
-                    <IonItem>
-                      Item1{" "}
-                      <IonIcon
-                        icon={removeCircleOutline}
-                        slot="end"
-                        color="red"
-                      ></IonIcon>
-                    </IonItem>
-                    <IonItem>
-                      Item2{" "}
-                      <IonIcon
-                        icon={removeCircleOutline}
-                        slot="end"
-                        color="red"
-                      ></IonIcon>
-                    </IonItem>
-                  </IonList>
-                </IonCardContent>
-              </IonCard>
-            </IonCol>
+                  <IonCardContent>
+                    <IonList>
+                      <IonItem>
+                        Item1
+                        <IonIcon
+                          icon={removeCircleOutline}
+                          slot="end"
+                          color="red"
+                          onClick={() => console.log('remove')}
+                        />
+                      </IonItem>
+                      <IonItem>
+                        Item2
+                        <IonIcon
+                          icon={removeCircleOutline}
+                          slot="end"
+                          color="red"
+                          onClick={() => console.log('remove')}
+                        />
+                      </IonItem>
+                    </IonList>
+                  </IonCardContent>
+                </IonCard>
+              </IonCol>
           </IonRow>
-        </IonGrid>
-        <Footer />
-      </IonContent>
-    </IonPage>
+          <Footer />
+        </IonContent>
+      </IonPage>
     )
 }
 
