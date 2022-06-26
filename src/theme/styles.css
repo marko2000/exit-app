@@ -63,6 +63,12 @@
   width: 60%;
 }
 
+/* ---------- Tickets ---------- */
+#addToCartBtn {
+  padding-left: 15px;
+  margin-top: -1em;
+}
+
 .tickets-grid {
   margin-top: 20px;
   margin-bottom: 100px;
@@ -73,22 +79,27 @@
   margin-top: -1em;
   width: 280%;
 }
+
 .accordion-group {
   margin-left: 20px;
   margin-right: 20px;
   width: 100%;
 }
+
 .side-tickets {
   margin-left: 20px;
   margin-right: 20px;
 }
+
 #ticketPrice {
   font-size: 15px;
   font-weight: bolder;
 }
+
 #ticketStage {
   margin-top: -1em;
 }
+
 .ticket-image {
   height: 80%;
   width: 70%;
@@ -320,52 +331,67 @@
   margin-top: 5px;
 }
 
-/**event card**/
-.event-card .event-name {
+/* ---------- Event ---------- */
+.event-name {
   display: block;
   font-size: x-large;
   font-weight: bolder;
   text-transform: capitalize;
   transition: all 0.3s ease 0s;
 }
-.event-card .event-start {
+
+.event-start {
   display: block;
   font-size: large;
   font-style: italic;
-  text-transform: capitalize;
   transition: all 0.3s ease 0s;
 }
-.event-card .stage-content {
+
+.event-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.event-icon {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+}
+
+.stage-content {
   align-items: center;
 }
+
 .event-tabs {
-  color: #f7f5ec !important;
+  color: #fff;
   font-size: 14px;
-  margin-left: -23px;
-  margin-top: 0px;
 }
+
 .home-page-title {
   margin-top: 1em;
   font-size: xx-large;
   font-weight: bolder;
 }
+
 .home-page-title:hover {
   color: #ec0a0a;
 }
+
 .home-page-text {
   margin-top: 3em;
 }
-.button-close-modal {
-  height: 20%;
-}
+
 #eventFooter {
   margin-top: -1.5em;
   align-items: center;
 }
+
 #eventCardButton {
   margin-left: -2em;
 }
 
+/* ---------- Footer ---------- */
 .footer-social {
   padding: 0;
 }
@@ -375,6 +401,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .title-footer {
   color: rgba(184, 184, 184, 0.993);
   font-weight: bold;
@@ -388,11 +415,13 @@
   color: #9a9a9a;
   padding: 40px 0 20px 0;
 }
+
 .content-footer .footer-img {
   max-width: 70px;
   display: flex;
   align-items: center;
 }
+
 .footer-row-logos {
   display: flex;
   justify-content: space-around;
@@ -401,9 +430,11 @@
   width: 100%;
   float: none;
 }
+
 .content-footer .footer-social {
   max-width: 60px;
 }
+
 .social-icon-footer {
   height: 30px;
   width: 30px;
@@ -411,6 +442,7 @@
   transition: all 0.3s ease 0s;
   text-decoration: none;
 }
+
 .footer-link-pages #link {
   font-weight: bold;
   letter-spacing: 1px;
@@ -441,11 +473,13 @@
   margin: 0 auto;
   line-height: 1.55;
 }
+
 .content-footer .copyright a {
   color: gray;
   border-bottom: 2px solid gray;
   text-decoration: none;
 }
+
 #footer {
   position: relative;
   min-width: 100%;
@@ -453,7 +487,7 @@
   text-align: center;
 }
 
-/***COMMENTS SECTION***/
+/* --------- Comments ---------- */
 .comments-header {
   margin-bottom: 50px !important;
   border: 1px solid #edeff2;
@@ -514,10 +548,12 @@
   border: 1px solid #edeff2;
   padding: 15px 10px 10px 20px;
 }
+
 .comment-card {
   padding-top: -1em;
   min-width: 90%;
 }
+
 .add-comment .add-comment-input {
   font-size: 13px;
   line-height: 50px;
@@ -531,31 +567,30 @@
   border-radius: 3px;
 }
 
-#addToCartBtn {
-  padding-left: 15px;
-  margin-top: -1em;
-}
-
 .add-comment .add-comment-input {
   height: 200px;
   font-size: large;
   color: #252525;
 }
+
 .comments {
   overflow-y: scroll;
   max-height: 85%;
   width: 100%;
   margin-bottom: 50px;
 }
+
 .scrollable {
   overflow-y: scroll;
 }
+
 .comment-rate {
   display: flex;
   align-items: center;
   min-height: 10vh;
   font-size: 20px;
 }
+
 #stars {
   cursor: pointer;
 }
