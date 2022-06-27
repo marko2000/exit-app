@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     IonAccordion,
     IonAccordionGroup,
@@ -14,6 +14,7 @@ import {
     IonList,
     IonPage,
     IonRow,
+    IonCardHeader
   } from "@ionic/react";
   import NavBar from "../components/navigation/NavBar";
   import TicketCard from "../components/shop/TicketCard";
@@ -85,7 +86,7 @@ import {
           img: "/images/tickets/exitcamp.png",
           price: 30,
         },
-      ];
+    ];
       const group3: Array<Ticket> = [
         {
           id: 11,
@@ -99,8 +100,33 @@ import {
           img: "/images/tickets/lockerFestival.png",
           price: 18,
         },
-      ];
+    ]; 
 
+      const [cartItems, setCartItems] = useState(
+        JSON.parse(localStorage.getItem("cartItems")!)
+      )
+
+      // console.log(JSON.parse(localStorage.getItem("cartItems")!))
+
+      let storageTotal = 0;
+      JSON.parse(localStorage.getItem('cartItems')!) === null ? storageTotal = 0 : JSON.parse(localStorage.getItem('cartItems')!).map((ticket: Ticket) => storageTotal += ticket.price)
+
+      const [total, setTotal] = useState(JSON.parse(localStorage.getItem('cartItems')!) === null
+      ? 0
+      : storageTotal);
+
+      const removeItem = (itemId: Number) => {
+        let cartItems1 = JSON.parse(localStorage.getItem('cartItems')!)
+        cartItems1 = cartItems1.filter((ticket: Ticket) => ticket.id !== itemId)
+        localStorage.setItem('cartItems', JSON.stringify(cartItems1))
+        setCartItems(cartItems1)
+        let deletedItem = cartItems.filter((ticket: Ticket) => ticket.id === itemId)
+        setTotal(total - deletedItem[0].price)
+      }
+
+      useEffect(() => {}, [cartItems]);
+      console.log(JSON.parse(localStorage.getItem('cartItems')!).length)
+      
       return (
         <IonPage>
             <IonHeader>
@@ -117,7 +143,7 @@ import {
                     </IonItem>
                     <IonList slot="content">
                     {group1.map((t) => (
-                      <TicketCard key={t.id} ticket={t} />
+                      <TicketCard key={t.id} id={t.id} img={t.img} title={t.title} price={t.price} />
                     ))}
                     </IonList>
                   </IonAccordion>
@@ -128,7 +154,7 @@ import {
                     </IonItem>
                     <IonList slot="content">
                       {group2.map((t) => (
-                        <TicketCard key={t.id} ticket={t} />
+                        <TicketCard key={t.id} id={t.id} img={t.img} title={t.title} price={t.price} />
                       ))}
                     </IonList>
                   </IonAccordion>
@@ -139,43 +165,41 @@ import {
                     </IonItem>
                     <IonList slot="content">
                       {group3.map((t) => (
-                        <TicketCard key={t.id} ticket={t} />
+                        <TicketCard key={t.id} id={t.id} img={t.img} title={t.title} price={t.price} />
                       ))}
                     </IonList>
                   </IonAccordion>
                 </IonAccordionGroup>
               </IonCol>
               <IonCol>
-                <IonCard className="cart">
-                  <IonItem color="red">
-                    <IonIcon icon={cartOutline} slot="start" />
-                    <IonLabel>Added to cart</IonLabel>
-                    <IonLabel slot="end">Total: 1000</IonLabel>
-                  </IonItem>
+                {total !== 0 ? (
+                  <IonCard className="cart">
+                    <IonItem color="red">
+                      <IonIcon icon={cartOutline} slot="start" />
+                      <IonLabel>Added to cart</IonLabel>
+                      <IonLabel slot="end">Total: {total}</IonLabel>
+                    </IonItem>
 
-                  <IonCardContent>
-                    <IonList>
-                      <IonItem>
-                        Item1
-                        <IonIcon
-                          icon={removeCircleOutline}
-                          slot="end"
-                          color="red"
-                          onClick={() => console.log('remove')}
-                        />
-                      </IonItem>
-                      <IonItem>
-                        Item2
-                        <IonIcon
-                          icon={removeCircleOutline}
-                          slot="end"
-                          color="red"
-                          onClick={() => console.log('remove')}
-                        />
-                      </IonItem>
-                    </IonList>
-                  </IonCardContent>
-                </IonCard>
+                    <IonCardContent>
+                      <IonList>
+                        {localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")!).filter((e: Ticket) => e !== null).map((ticket: Ticket) => (
+                          <IonItem>
+                            {ticket.title}
+                            <IonIcon
+                            icon={removeCircleOutline}
+                            slot="end"
+                            color="red"
+                            onClick={() => removeItem(ticket.id)}
+                            />
+                          </IonItem>
+                        )) : null}
+                      </IonList>
+                    </IonCardContent>
+                  </IonCard> ) : (
+                  <IonCard className="cart">
+                    <IonCardHeader style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '20px', padding: '16px', fontWeight: '600'}} color="red"><span>Cart is empty!</span></IonCardHeader>
+                  </IonCard>
+                )}
               </IonCol>
           </IonRow>
           <Footer />
