@@ -1,5 +1,6 @@
 import {
     IonButton,
+    IonContent,
     IonHeader,
     IonImg,
     IonInput,
@@ -8,7 +9,6 @@ import {
     IonList,
     IonPage,
     IonRouterLink,
-    IonContent
 } from "@ionic/react";
 import React, {useState} from "react";
 import NavBar from "../components/navigation/NavBar";
@@ -16,7 +16,6 @@ import User from "../model/User";
 import {useAuthentication} from "../store/AuthenticationContext";
 import {useHistory} from "react-router";
 import {useError} from "../store/ErrorContext";
-import Footer from "../components/navigation/Footer";
 
 const DEFAULT_ROLE = "visitor"; //admini su upanpred registrovani, tako da neko ko se sam registruje može da bude samo sa ulogom visitor
 
@@ -50,19 +49,20 @@ const Registration: React.FC = () => {
                 <NavBar/>
             </IonHeader>
 
-            <IonContent>
-                <IonImg src={"/images/registration.jpeg"} className="img-top" />
+            <IonContent fullscreen>
+                <IonImg src={"/images/registration.jpeg"} className="imgTop"></IonImg>
 
-                <IonList className="auth-form" color="grey">
-                    <IonItem className="auth-form-input">
+                <IonList className="registrationForm" color="grey">
+                    <IonItem className="registrationFormInput">
                         <IonLabel position="floating">Name</IonLabel>
                         <IonInput
                             value={firstname}
                             onIonChange={(e) => setFirstname(e.detail.value!)}
                             clearInput
+                            color="success"
                         ></IonInput>
                     </IonItem>
-                    <IonItem className="auth-form-input">
+                    <IonItem className="registrationFormInput">
                         <IonLabel position="floating">Lastname</IonLabel>
                         <IonInput
                             value={lastname}
@@ -70,7 +70,7 @@ const Registration: React.FC = () => {
                             clearInput
                         ></IonInput>
                     </IonItem>
-                    <IonItem className="auth-form-input">
+                    <IonItem className="registrationFormInput">
                         <IonLabel position="floating">Username</IonLabel>
                         <IonInput
                             value={userEmail}
@@ -78,7 +78,7 @@ const Registration: React.FC = () => {
                             clearInput
                         ></IonInput>
                     </IonItem>
-                    <IonItem className="auth-form-input">
+                    <IonItem className="registrationFormInput">
                         <IonLabel position="floating">Password</IonLabel>
                         <IonInput
                             type="password"
@@ -86,17 +86,15 @@ const Registration: React.FC = () => {
                             onIonChange={(e) => setPassword(e.detail.value!)}
                         ></IonInput>
                     </IonItem>
-                    <div className="auth-button-section">
-                        <IonButton color="grey" id="registerBtn" onClick={register}>
-                            Register!
-                        </IonButton>
-                        <IonRouterLink href={"/login"} id="registerLabel">
-                            Already have an account?
-                        </IonRouterLink>
-                    </div>    
+
+                    <IonButton color="grey" id="registerBtn" onClick={register}>
+                        Register!
+                    </IonButton>
+                    <IonRouterLink href={"/login"} id="registerLabel">
+                        Already have an account?
+                    </IonRouterLink>
                 </IonList>
-                <Footer />
-                </IonContent>
+            </IonContent>
         </IonPage>
     );
 };

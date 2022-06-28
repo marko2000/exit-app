@@ -1,7 +1,18 @@
-import {IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonSlide, IonSlides, IonTitle,} from "@ionic/react";
+import {
+    IonContent,
+    IonGrid,
+    IonHeader,
+    IonImg,
+    IonPage,
+    IonRow,
+    IonSlide,
+    IonSlides,
+    IonTitle,
+} from "@ionic/react";
 import React from "react";
 import NavBar from "../components/navigation/NavBar";
 import Footer from "../components/navigation/Footer";
+import Counter from "../components/counter/Counter";
 
 const Home: React.FC = () => {
     const slideOpts = {
@@ -20,7 +31,7 @@ const Home: React.FC = () => {
                 <NavBar/>
             </IonHeader>
 
-            <IonContent fullscreen className="home-page">
+            <IonContent fullscreen className="homePage">
                 <IonSlides pager={true} options={slideOpts}>
                     {[1, 2, 3, 4, 5, 6].map(i => {
                         return (<IonSlide key={i}>
@@ -29,13 +40,13 @@ const Home: React.FC = () => {
 
                     })}
                 </IonSlides>
-                {/* <IonTitle color="white" className="home-page-title">
+                <IonTitle color="grey" className="HomePageTitle">
                     Exit App
-                </IonTitle> */}
-                <IonGrid className="home-page-text">
-                    {/* <IonRow> */}
-                           {/* here comes counter */}
-                    {/* </IonRow> */}
+                </IonTitle>
+                <IonGrid className="HomePageText">
+                    <IonRow>
+                        <Counter/>
+                    </IonRow>
                     <IonRow
                         style={{
                             display: "flex",
@@ -47,7 +58,7 @@ const Home: React.FC = () => {
                     </IonRow>
 
                 </IonGrid>
-                <Footer />
+                <Footer></Footer>
             </IonContent>
         </IonPage>
     );

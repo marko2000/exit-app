@@ -233,11 +233,11 @@
 
 .stage-card .picture {
   display: inline-block;
-  height: 130px;
-  width: 130px;
   margin-bottom: 5px;
   z-index: 1;
   position: relative;
+  font-size: 25px;
+  font-weight: bolder;
 }
 
 .stage-card .picture .img {
@@ -293,11 +293,6 @@
 
 #stageTabsSponsor {
   margin-right: -0.5em;
-}
-
-.stageContent {
-  margin-top: -40px !important;
-  margin-bottom: 20px;
 }
 
 /**add performer*/

@@ -41,16 +41,16 @@ const EventCard: React.FC<{event: Event}> = ({event}) => {
     return (
       <>
       <div className="scrollable">
-        <IonCard className="eventCard">
+        <IonCard className="stage-card">
           <IonImg src={event.image} className="img" />
-          <IonCardHeader className="picture"></IonCardHeader>
-          <IonCardContent className="stageContent">
-            <br />
+          <IonCardHeader className="picture">
             <IonLabel className="eventName" color="grey">
               {event.name}
             </IonLabel>
-            <IonLabel className="eventStart" color="grey">
-              <b>Starts:</b> {reverse(event.start)}
+          </IonCardHeader>
+          <IonCardContent className="stage-content">
+            <IonLabel className="event-start" color="grey">
+              Starts: {reverse(event.start)}
             </IonLabel>
   
             {authentication.authenticatedUser &&
@@ -58,9 +58,9 @@ const EventCard: React.FC<{event: Event}> = ({event}) => {
                 <EventCardAdminControls event={event} />
               )}
           </IonCardContent>
-          <IonGrid id="eventFooter">
-            <IonRow className="social" color="red">
-              <IonCol>
+
+          <IonRow className="event-buttons" color="red" id="eventFooter">
+              <div>
                 <IonModal isOpen={showModalPerformers}>
                   <div className="scrollable">
                     <PerformersList performers={event.performers} />
@@ -88,12 +88,11 @@ const EventCard: React.FC<{event: Event}> = ({event}) => {
                   }}
                   color="grey"
                 >
-                  <IonIcon icon={peopleOutline} className="iconMenu"></IonIcon>
-                  <IonText className="eventtabs">Performers</IonText>
+                  <IonIcon icon={peopleOutline} className="event-icon" />
+                  <IonText className="event-tabs">Performers</IonText>
                 </IonButton>
-              </IonCol>
-  
-              <IonCol>
+              </div>
+              <div>
                 <IonModal isOpen={showModalStage} className="scrollable">
                   <StageCard stage={event.stage} />
                   <IonButton
@@ -108,12 +107,12 @@ const EventCard: React.FC<{event: Event}> = ({event}) => {
                   </IonButton>
                 </IonModal>
                 <IonButton onClick={() => setShowModalStage(true)} color="grey">
-                  <IonIcon icon={locationOutline} className="iconMenu"></IonIcon>
-                  <IonText className="eventtabs" id="eventCardbutton">
+                  <IonIcon icon={locationOutline} className="event-icon"></IonIcon>
+                  <IonText className="event-tabs" id="eventCardbutton">
                     {event.stage.name}
                   </IonText>
                 </IonButton>
-              </IonCol>
+              </div>
               <IonCol className="commentsBox">
                 <IonModal isOpen={showModalComments} className="scrollable">
                   <CommentSection event={event} />
@@ -142,7 +141,6 @@ const EventCard: React.FC<{event: Event}> = ({event}) => {
                 </IonButton>
               </IonCol>
             </IonRow>
-          </IonGrid>
         </IonCard>
         </div>
       </>

@@ -13,7 +13,6 @@ const StageCard: React.FC<{
       <IonCard className="stage-card">
         <IonImg src={stage.image} className="img"></IonImg>
         <IonCardContent className="stage-content">
-          <br />
           <IonLabel className="stage-name" color="grey">
             {stage.name}
           </IonLabel>
@@ -24,16 +23,22 @@ const StageCard: React.FC<{
             )}
         </IonCardContent>
         <IonRow className="social-stage" color="red">
+        <div className="stage-info">
           <IonIcon icon={peopleOutline} className="icon-stage">
             {" "}
           </IonIcon>
           <IonLabel className="stage-tabs">{stage.capacity}</IonLabel>
+          </div>
+          <div className="stage-info">
           <IonIcon icon={cashOutline} className="icon-stage"></IonIcon>
           <IonLabel className="stage-tabs" id="stagetabsSponsor">
             {stage.sponsor}
           </IonLabel>
+          </div>
+          <div className="stage-info">
           <IonIcon icon={locationOutline} className="icon-stage"></IonIcon>{" "}
-          <IonLabel className="stage-tabs-location">{stage.location}</IonLabel>
+          <IonLabel className="stage-tabs">{stage.location}</IonLabel>
+          </div>
         </IonRow>
       </IonCard>
   );
