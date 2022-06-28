@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import StagesPage from "./pages/StagesPage";
 import AddStage from "./components/stage/admin/AddStage";
 import PerformersPage from "./pages/PerformersPage";
-import UpdatePerformerForm from "./components/performer/admin/UpdatePerformerForm";
+import UpdatePerformerForm from "./components/performer/admin/UpdatePerformerCard";
 import EventsPage from "./pages/event/EventsPage";
 import AddEventPage from "./pages/event/AddEventPage";
 import Tickets from "./pages/Tickets";

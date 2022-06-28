@@ -1,30 +1,37 @@
+import React, { useRef } from "react";
 import {
-    IonButton,
-    IonCard,
-    IonCardContent,
-    IonCardTitle,
-    IonCol,
-    IonGrid,
-    IonInput,
-    IonItem,
-    IonLabel,
-    IonRow,
-    IonToolbar,
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardTitle,
+  IonCol,
+  IonGrid,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonRow,
+  IonToolbar,
+  useIonAlert
 } from "@ionic/react";
-import React, {useRef} from "react";
-import Performer from "../../../model/Performer";
 import { useAuthentication } from "../../../store/AuthenticationContext";
 import { usePerformers } from "../../../store/PerformersContext";
+import Performer from "../../../model/Performer";
+import { useHistory } from "react-router";
 
-const AddPerformer: React.FC<{}> = () => {
-    const nameRef = useRef<HTMLIonInputElement>(null)
-    const surnameRef = useRef<HTMLIonInputElement>(null)
-    const nickRef = useRef<HTMLIonInputElement>(null)
-    const genreRef = useRef<HTMLIonInputElement>(null)
-    const imageRef = useRef<HTMLIonInputElement>(null)
+const AddPerformerModal = () => {
+
+    const nameRef = useRef<HTMLIonInputElement>(null);
+    const surnameRef = useRef<HTMLIonInputElement>(null);
+    const nickRef = useRef<HTMLIonInputElement>(null);
+    const genreRef = useRef<HTMLIonInputElement>(null);
+    const imageRef = useRef<HTMLIonInputElement>(null);
+
 
     const authentication = useAuthentication();
     const performersContext = usePerformers();
+
+    const [present] = useIonAlert();
+    const history = useHistory();
 
     function addPerformer() {
         let newPerformer: Performer = {
@@ -34,22 +41,36 @@ const AddPerformer: React.FC<{}> = () => {
             nick: nickRef.current!.value! as string,
             genre: genreRef.current!.value! as string,
             image: imageRef.current!.value! as string,
-            user_id: authentication.userId! as number
+            user_id: authentication.userId!,
+        };
+        if (
+            newPerformer.name === "" ||
+            newPerformer.surname === "" ||
+            newPerformer.nick === "" ||
+            newPerformer.genre === "" ||
+            newPerformer.image === ""
+        ) {
+            present(" You must fill all required information.", [{text: "Ok"}]);
+            return;
         }
-        console.log(newPerformer)
-        performersContext.addPerformer(newPerformer);
+        performersContext.addPerformer(newPerformer)
+
+        present(
+            newPerformer.name + " " + newPerformer.surname + " added successfully",
+            [{text: "Ok"}]
+        );
+        history.goBack();
     }
 
     return (
         <IonCard>
-            <IonCardTitle className="add-performer-title">
+            <IonCardTitle className="addPerformerTitle">
                 <IonToolbar color="grey">Add performer</IonToolbar>
             </IonCardTitle>
-
             <IonCardContent>
                 <IonGrid>
                     <IonRow>
-                        <IonCol className="add-performer-col">
+                        <IonCol className="addPerformerCol">
                             <IonItem>
                                 <IonLabel position="floating">Performer name:</IonLabel>
                                 <IonInput
@@ -93,7 +114,7 @@ const AddPerformer: React.FC<{}> = () => {
                                 ></IonInput>
                             </IonItem>
 
-                            <IonItem className="add-performer-img">
+                            <IonItem className="addPerformerImg">
                                 <IonLabel position="floating">Image:</IonLabel>
                                 <IonInput
                                     type="text"
@@ -107,9 +128,19 @@ const AddPerformer: React.FC<{}> = () => {
                                 type="submit"
                                 onClick={addPerformer}
                                 color="grey"
-                                className="add-performer-card"
+                                className="addPerformerCard"
                             >
                                 Add performer
+                            </IonButton>
+                            <IonButton
+                                expand="full"
+                                type="submit"
+                                onClick={() => history.goBack()}
+                                color="grey"
+                                className="addPerformerCard"
+                                id="updatePerformerButton"
+                            >
+                                Cancel adding
                             </IonButton>
                         </IonCol>
                     </IonRow>
@@ -117,6 +148,7 @@ const AddPerformer: React.FC<{}> = () => {
             </IonCardContent>
         </IonCard>
     );
-};
-
-export default AddPerformer;
+}
+  
+  export default AddPerformerModal;
+  

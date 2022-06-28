@@ -1,26 +1,24 @@
 import Performer from "../model/Performer";
 import React, {createContext, useContext, useState} from "react";
-import axios from "axios";
 import { useAuthentication } from "./AuthenticationContext";
-
-const apiUrl = "http://localhost:8080/api/performers"
+import { addPerformerApi, deletePerformerApi, getAllPerformersApi, updatePerformerApi } from "../api/performersApi";
 
 type PerformersContextType = {
     performers: Array<Performer>;
     selectedPerformer: Performer | null | undefined;
-    addPerformer: (performer: Performer) => void;
-    deletePerformer: (performer: Performer) => void;
-    updatePerformer: (performer: Performer, id: number) => void;
+    addPerformer: (performer: Performer) => Promise<void> | null;
+    deletePerformer: (performer: Performer) => Promise<void> | null;
+    updatePerformer: (performer: Performer, id: number) => Promise<void> | null;
     getAllPerformers: () => void;
     selectPerformer: (performer: Performer) => void;
 }
 
 const PerformersContext = createContext<PerformersContextType>({
     performers: [],
-    selectedPerformer: null,
-    addPerformer: () => {},
-    updatePerformer: () => {},
-    deletePerformer: () => {},
+    selectedPerformer: undefined,
+    addPerformer: () => null,
+    updatePerformer: () => null,
+    deletePerformer: () => null,
     getAllPerformers: () => {},
     selectPerformer: () => {}
 })
@@ -32,7 +30,13 @@ export const usePerformers = () => {
 export const PerformersProvider: React.FC = (props) => {
     const authentication = useAuthentication()
 
-    const [performers, setPerformers] = useState<Array<Performer>>()
+    const requestConfig: any = {
+        headers: {
+            'Authorization': authentication.accessToken as string
+        }
+    }
+
+    const [performers, setPerformers] = useState<Array<Performer>>([])
     const [selectedPerformer, setSelectedPerformer] = useState<Performer | null>()
 
     const selectPerformer = (performer: Performer) => {
@@ -40,76 +44,33 @@ export const PerformersProvider: React.FC = (props) => {
     }
 
     const getAllPerformers = () => {
-        axios.get<Array<Performer>>(apiUrl)
-        .then((response) => {
-            setPerformers(response.data)
-        })
-        .catch(error => {
-            setPerformers([])
-        })
-        if(!performers) {
-            setPerformers([])
-        }
+        getAllPerformersApi(requestConfig)
+            .then(performers => setPerformers(performers))
+            .catch(() => {
+                setPerformers([])
+            })
     }
 
-    const addPerformer = (performer: Performer) => {
-        console.log('addPerformer: ' + performer)
-        axios
-            .post<Performer>(apiUrl, performer, {
-                headers: {
-                    'Authorization': authentication.role + " " + authentication.accessToken
-                }
+    const addPerformer = (performer: Performer): Promise<void> => {
+        return addPerformerApi(performer, requestConfig)
+            .then(addedPerformer => {
+                if(!addedPerformer)
+                    throw new Error("Could not add new performer. Server error.")
+                let newPerformers = [...performers?.concat(addedPerformer)]
+                setPerformers(newPerformers)
             })
-            .then((response) => {
-                performers!.push(response.data)
-                setPerformers(performers)
-            })
-            .catch((e) => {
-                console.log(e);
-            });
     }
 
-    const updatePerformer = (performer: Performer, id: number) => {
-        axios
-            .put<Performer>(`${apiUrl}/${id}`, performer, {
-                headers: {
-                    'Authorization': authentication.role + " " + authentication.accessToken
-                }
+    const updatePerformer = (performer: Performer, id: number): Promise<void> => {
+        return updatePerformerApi(performer, id, requestConfig)
+            .then(updatedPerformer => {
+                setPerformers([...performers?.concat(updatedPerformer)])
             })
-            .then((response) => {
-                console.log('Updated performer: ' + response.data);
-                let oldPerformer = performers?.find(performer => performer.id === id)
-                if (!oldPerformer) {
-                    performers?.push(response.data)
-                } else {
-                    // updating fields manually
-                    oldPerformer.name = response.data.name;
-                    oldPerformer.nick = response.data.nick;
-                    oldPerformer.surname = response.data.surname;
-                    oldPerformer.genre = response.data.genre;
-                    oldPerformer.image = response.data.image;
-                }
-                setPerformers(performers)
-            })
-            .catch((e) => {
-                console.log(e);
-            });
     }
 
-    const deletePerformer = (performer: Performer) => {
-        axios
-            .delete<Performer>(`${apiUrl}/${performer.id}`, {
-                headers: {
-                    'Authorization': authentication.role + " " + authentication.accessToken
-                }
-            })
-            .then((response) => {
-                console.log(response.data);
-                setPerformers(performers?.filter(performer => performer.id !== response.data.id))
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+    const deletePerformer = (performer: Performer): Promise<void> => {
+        return deletePerformerApi(performer, requestConfig)
+            .then(deletedPerformer => setPerformers(performers?.filter(performer => performer.id !== deletedPerformer.id)))
     };
 
     const context: PerformersContextType = {

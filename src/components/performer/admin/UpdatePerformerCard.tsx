@@ -10,11 +10,14 @@ import {
     IonLabel,
     IonRow,
     IonToolbar,
+    useIonAlert,
 } from "@ionic/react";
-import React, {useEffect, useRef} from "react";
+import React, { useRef} from "react";
 import Performer from "../../../model/Performer";
 import { usePerformers } from "../../../store/PerformersContext";
 import { useAuthentication } from "../../../store/AuthenticationContext";
+import { useHistory } from "react-router";
+import { useError } from "../../../store/ErrorContext";
 
 const UpdatePerformerForm: React.FC<{ performer: Performer }> = ({performer}) => {
 
@@ -22,10 +25,8 @@ const UpdatePerformerForm: React.FC<{ performer: Performer }> = ({performer}) =>
 
     const performersContext = usePerformers();
 
-    useEffect(() => {
-        console.log('Printing performer in UpdatePerformerModal: ' + performer.id)
-    }, []);
-
+    const [present] = useIonAlert();
+    const {addError} = useError();
 
     const nameRef = useRef<HTMLIonInputElement>(null);
     const surnameRef = useRef<HTMLIonInputElement>(null);
@@ -33,8 +34,9 @@ const UpdatePerformerForm: React.FC<{ performer: Performer }> = ({performer}) =>
     const nickRef = useRef<HTMLIonInputElement>(null);
     const genreRef = useRef<HTMLIonInputElement>(null);
 
-    function updatePerformer() {
-        // todo: validation necessary
+    const history = useHistory();
+
+    const updatePerformer = () => {
         let updatedPerformer: Performer = {
             id: performer.id,
             name: nameRef.current!.value ? nameRef.current!.value as string : performer.name,
@@ -46,7 +48,23 @@ const UpdatePerformerForm: React.FC<{ performer: Performer }> = ({performer}) =>
                 Math.floor(Math.random() * 10),
         };
 
+        if (
+            updatedPerformer.name === "" ||
+            updatedPerformer.surname === "" ||
+            updatedPerformer.nick === "" ||
+            updatedPerformer.genre === "" ||
+            updatedPerformer.image === ""
+        ) {
+            present(" You must fill all required information.", [{text: "Ok"}]);
+            return;
+        }
+
         performersContext.updatePerformer(updatedPerformer, updatedPerformer.id)
+            ?.catch(() => addError("Could not update performer. Check all input information."));
+
+        present(updatedPerformer.name + " " + updatedPerformer.surname + " successfully updated.", [{text: "Ok"}]);
+
+        history.goBack();
     }
 
     return (
@@ -131,6 +149,16 @@ const UpdatePerformerForm: React.FC<{ performer: Performer }> = ({performer}) =>
                                 id="updatePerformerButton"
                             >
                                 Update performer
+                            </IonButton>
+                            <IonButton
+                                expand="full"
+                                type="submit"
+                                onClick={() => history.goBack()}
+                                color="grey"
+                                className="addPerformerCard"
+                                id="updatePerformerButton"
+                            >
+                                Cancel
                             </IonButton>
                         </IonCol>
                     </IonRow>

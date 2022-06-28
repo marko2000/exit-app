@@ -10,7 +10,9 @@ import {
   import { closeCircleOutline, create, trash } from "ionicons/icons";
   import Performer from "../../../model/Performer";
   import { usePerformers } from "../../../store/PerformersContext";
-  import UpdatePerformerForm from "./UpdatePerformerForm";
+  import UpdatePerformerCard from "./UpdatePerformerCard";
+  import { useHistory } from "react-router";
+  import { useError } from "../../../store/ErrorContext";
 
   const PerformerCardAdminControls: React.FC<{
     performer: Performer;
@@ -18,10 +20,15 @@ import {
     const [showModalUpdate, setShowModalUpdate] = useState(false);
   
     const performersContext = usePerformers();
+    const {addError} = useError();
+
+    const history = useHistory();
   
     const deletePerformer = () => {
-      performersContext.deletePerformer(performer);
+      performersContext.deletePerformer(performer)
+        ?.catch(() => addError("Could not delete performer. \nPossible reasons: \n Performer is on existing event."));
     };
+
     return (
       <IonGrid>
           <IonCol>
@@ -48,10 +55,10 @@ import {
             >
               <IonIcon icon={closeCircleOutline} slot="end" color="grey" />
             </IonButton>
-            <UpdatePerformerForm performer={performer} />
+            <UpdatePerformerCard performer={performer} />
           </IonModal>
           <IonCol>
-            <IonButton onClick={() => setShowModalUpdate(true)} expand={"block"}>
+            <IonButton onClick={() => history.push(`performers/update/${performer.id}`)} expand={"block"}>
               <IonIcon
                 icon={create}
                 className="table-icon"
