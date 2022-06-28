@@ -1,18 +1,22 @@
-import React, { useState } from "react";
-import {IonButton, IonCol, IonGrid, IonIcon, IonModal, IonRow} from "@ionic/react";
+import React from "react";
+import {IonButton, IonCol, IonGrid, IonIcon, IonRow} from "@ionic/react";
 import { create, trash } from "ionicons/icons";
 import { useEvents } from "../../../store/EventsContext";
 import Event from "../../../model/Event";
-import UpdateEventCard from "./UpdateEventCard";
+import { useHistory } from "react-router";
+import { useError } from "../../../store/ErrorContext";
 
 const EventCardAdminControls: React.FC<{event: Event}> = ({event}) => {
-    const [showModalUpdate, setShowModalUpdate] = useState(false)
-    const [canBeDismissed, setCanBeDismissed] = useState(false)
+    const history = useHistory();
+    const {addError} = useError();
 
     const eventsContext = useEvents();
 
     const deleteEvent = () => {
-        eventsContext.deleteEvent(event);
+        eventsContext.deleteEvent(event)!
+            .catch(() => {
+                addError("Could not delete event. There are comments on this event.")
+            });
     }
 
     return (
@@ -32,30 +36,14 @@ const EventCardAdminControls: React.FC<{event: Event}> = ({event}) => {
                 </IonCol>
             </IonRow>
             <IonRow>
-                <IonModal
-                    onIonModalDidDismiss={() => setShowModalUpdate(false)}
-                    isOpen={showModalUpdate}
-                    canDismiss={canBeDismissed}
-                >
-                    <UpdateEventCard event={event}/>
-                    <IonButton
-                        color="grey"
-                        size="default"
-                        onClick={() => {
-                            setShowModalUpdate(false);
-                            setCanBeDismissed(true)
-                        }}
-                    >
-                        Close
-                    </IonButton>
-                </IonModal>
                 <IonCol>
                     <IonButton
                         onClick={() => {
-                            setShowModalUpdate(true)
-                            setCanBeDismissed(false)
+                            history.push(`/events/update/${event.id}`)
                         }}
-                        expand={"block"}>
+                        expand={"block"}
+                        id="adminControlBtn"
+                        >
                         <IonIcon
                             icon={create}
                             className="table-icon"

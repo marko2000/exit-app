@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import {
     IonButton,
     IonCard,
-    IonCardContent, IonCardHeader,
+    IonCardContent,
+    IonCardHeader,
     IonCardTitle,
     IonCol,
     IonGrid,
@@ -12,14 +13,16 @@ import {
     IonRow,
     IonSelect,
     IonSelectOption,
+    useIonAlert
   } from "@ionic/react";
-  import { useAuthentication } from "../../../store/AuthenticationContext";
-  import Stage from "../../../model/Stage";
-  import Event from "../../../model/Event";
+import { useAuthentication } from "../../../store/AuthenticationContext";
+import Stage from "../../../model/Stage";
+import Event from "../../../model/Event";
 import { useStages } from "../../../store/StagesContext";
 import { usePerformers } from "../../../store/PerformersContext";
 import { useEvents } from "../../../store/EventsContext";
 import { useHistory } from "react-router";
+import { useError } from "../../../store/ErrorContext";
 
 const AddEventCard: React.FC = () => {
     const [name, setName] = useState<string>();
@@ -34,13 +37,12 @@ const AddEventCard: React.FC = () => {
     const performersContext = usePerformers();
 
     const history = useHistory();
+    const [present] = useIonAlert();
+    const {addError} = useError();
 
     useEffect(() => {
         stagesContext.getAllStages();
-        console.log(stagesContext.stages)
-
         performersContext.getAllPerformers();
-        console.log(performersContext.performers)
     }, [])
 
     const addEvent = () => {
@@ -51,12 +53,29 @@ const AddEventCard: React.FC = () => {
             start: start!,
             stage: stage!,
             performers: performersRef.current!.value,
-            user_id: authentication.userId || Math.floor(Math.random() * 10)
+            user_id: authentication.userId!
         }
 
-        console.log('New event:')
-        console.log(newEvent)
-        eventsContext.addEvent(newEvent);
+        if (
+          newEvent.name === "" ||
+          newEvent.start === "" ||
+          newEvent.image === null ||
+          newEvent.performers === null ||
+          newEvent.image === ""
+        ) {
+          present("You must fill all required information.", [
+            {text: "Ok"}
+          ])
+          return;
+        }
+
+        eventsContext.addEvent(newEvent)
+          ?.catch(() => {
+            addError("Could not add new event. Check input information.")
+            return;
+          })
+
+        present("New event added successfully.", [{text: "Ok"}])
 
         history.goBack();
     }

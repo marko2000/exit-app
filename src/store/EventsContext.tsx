@@ -1,22 +1,25 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { useAuthentication } from "./AuthenticationContext";
 import Event from "../model/Event";
 import { addEventApi, deleteEventApi, getAllEventsApi, getEventByIdApi, updateEventApi } from "../api/eventsApi";
+import {StagesProvider} from "./StagesContext";
+import {PerformersProvider} from "./PerformersContext";
+import {getAllPerformersByEventApi} from "../api/performersApi";
 
 type EventsContextType = {
     events: Array<Event>;
-    addEvent: (event: Event) => void;
-    deleteEvent: (event: Event) => void;
-    updateEvent: (event: Event, id: number) => void;
+    addEvent: (event: Event) => Promise<void> | null;
+    deleteEvent: (event: Event) => Promise<void> | null;
+    updateEvent: (event: Event, id: number) => Promise<void> | null;
     getAllEvents: () => void;
     getEventById: (id: number, authorizationHeader: string) => void;
 }
 
 const EventsContext = createContext<EventsContextType>({
     events: [],
-    addEvent: () => {},
-    updateEvent: () => {},
-    deleteEvent: () => {},
+    addEvent: () => null,
+    updateEvent: () => null,
+    deleteEvent: () => null,
     getAllEvents: () => {},
     getEventById: () => {}
 })
@@ -27,56 +30,54 @@ export const useEvents = () => {
 
 export const EventsProvider: React.FC = (props) => {
     const authentication = useAuthentication();
-    const authorizationHeader = authentication.role + " " + authentication.accessToken;
+    const requestConfig: any = {
+        headers: {
+            'Authorization': authentication.accessToken as string
+        }
+    }
 
-    const [events, setEvents] = useState<Array<Event>>();
-
-    useEffect(() => {
-        return () => console.log('cleaner')
-    })
+    const [events, setEvents] = useState<Array<Event>>([]);
 
     const getAllEvents = () => {
-        getAllEventsApi().then(retrievedEvents => {
-            if (!retrievedEvents) {
-                console.log("Could not retrieve all events")
-                setEvents([])
-                return
-            }
-            console.log("retrieved events in context")
-            console.log(retrievedEvents)
-            setEvents(retrievedEvents)
+        getAllEventsApi(requestConfig)
+            .then(retrievedEvents => {
+                retrievedEvents.forEach(event => {
+                    getAllPerformersByEventApi(event, requestConfig)
+                        .then(performers => {
+                            event.performers = performers;
+                        })
+                })
+                setEvents(retrievedEvents);
+            })
+            .catch(error => {
+                setEvents([]);
+            })
+    }
+
+    const addEvent = (event: Event): Promise<void> | null => {
+        return addEventApi(event, requestConfig)
+            .then(addedEvent => {
+                if (!addedEvent) 
+                    throw new Error("Failed to add new event with name: " + event.name + ". Server error.");
+
+                let newEvents = [...events?.concat(addedEvent)]
+                setEvents(newEvents)
         })
     }
 
-    const addEvent = (event: Event) => {
-        addEventApi(event, authorizationHeader).then(addedEvent => {
-            if (!addedEvent) {
-                console.log("Failed to add event: " + event.name)
-                return
-            }
-            console.log(addedEvent)
-            events!.push(addedEvent)
-            setEvents(events)
+    const updateEvent = (event: Event, id: number): Promise<void> | null => {
+        return updateEventApi(event, id, requestConfig).then(updatedEvent => {
+            let withoutUpdated = events?.filter(event => event.id === id)
+            let newEvents = [...withoutUpdated?.concat(updatedEvent)]
+            console.log("Events in context after concat.")
+            console.log(events)
+            console.log(newEvents)
+            setEvents(newEvents)
         })
     }
 
-    const updateEvent = (event: Event, id: number) => {
-        updateEventApi(event, id, authorizationHeader).then(updatedEvent => {
-            if (!updatedEvent) {
-                console.log("Failed to update event: " + event.name)
-                return
-            }
-            
-            let oldEvent = events?.find(event => event.id === id)
-            if(!oldEvent) {
-                events?.push(updatedEvent)
-            }
-            setEvents(events)
-        })
-    }
-
-    const deleteEvent = (event: Event) => {
-        deleteEventApi(event, authorizationHeader).then(deletedEvent => {
+    const deleteEvent = (event: Event): Promise<void> => {
+        return deleteEventApi(event, requestConfig).then(deletedEvent => {
             if(deletedEvent)
             setEvents(events?.filter(event => event.id !== deletedEvent.id))
         })
@@ -92,6 +93,10 @@ export const EventsProvider: React.FC = (props) => {
     }
 
     return <EventsContext.Provider value={context}>
-        {props.children}
+        <StagesProvider>
+            <PerformersProvider>
+                {props.children}
+            </PerformersProvider>
+        </StagesProvider>
     </EventsContext.Provider>
 }
