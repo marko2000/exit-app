@@ -6,4 +6,5 @@ interface User {
     password: string;
     role: string;
 }
+
 export default User;

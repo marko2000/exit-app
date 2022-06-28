@@ -22,7 +22,7 @@ const TicketCard: React.FC<Ticket> = (ticket) => {
   return (
     <IonCard>
       <IonCardHeader className="ticket-header">
-        <IonImg src={ticket.img} className="ticket-image" />
+        <IonImg src={ticket.image} className="ticket-image" />
         <IonLabel className="ticket-title">{ticket.title}</IonLabel>
       </IonCardHeader>
       <IonCardContent className="ticket-card-content">

@@ -41,7 +41,7 @@ const AddEventCard: React.FC = () => {
 
         performersContext.getAllPerformers();
         console.log(performersContext.performers)
-    })
+    }, [])
 
     const addEvent = () => {
         let newEvent: Event = {
