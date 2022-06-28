@@ -17,7 +17,7 @@ const AddPerformer: React.FC<{}> = () => {
         expand={"block"}
       >
         <IonText>Add new performer</IonText>
-        <IonIcon icon={addCircle} className="iconMenu" slot="end"></IonIcon>
+        <IonIcon icon={addCircle} className="icon-menu" slot="end"></IonIcon>
       </IonButton>
     );
 };

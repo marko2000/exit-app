@@ -1,18 +1,16 @@
-import React, {useEffect, useState} from "react";
-import { IonImg, IonSearchbar } from "@ionic/react";
-import { useStages } from "../../store/StagesContext";
+import {IonImg} from "@ionic/react";
+import React, {useEffect} from "react";
+import {useStages} from "../../store/StagesContext";
 import StageList from "./StageList";
-import AddStageModal from "./admin/AddStageModal";
-import { useAuthentication } from "../../store/AuthenticationContext";
-import Footer from "../navigation/Footer";
+import AddStageButton from "./admin/AddStageButton";
+import {useAuthentication} from "../../store/AuthenticationContext";
+import ErrorNotification from "../error/ErrorNotification";
+import {useError} from "../../store/ErrorContext";
 
-const StagePageContent = () => {
+const StagesPageContent = () => {
     const stagesContext = useStages();
     const authentication = useAuthentication();
-
-    const [searchCondition, setSearchCondition] = useState("");
-
-    let displayedStages = searchCondition ? stagesContext.stages.filter(stage => stage.name.includes(searchCondition) || stage.sponsor.includes(searchCondition) || stage.location.includes(searchCondition)) : stagesContext.stages
+    const {error} = useError()
 
     useEffect(() => {
         stagesContext.getAllStages();
@@ -20,13 +18,13 @@ const StagePageContent = () => {
 
     return (
         <>
-            <IonImg src={"/images/stages.jpeg"} className="img" />
-            {authentication.authenticatedUser && authentication.role === "admin" && <AddStageModal />}
-            <IonSearchbar value={searchCondition} onIonChange={e => setSearchCondition(e.detail.value!.trim())} />
-            <StageList stages={displayedStages} />
-            <Footer />
+            {error && <ErrorNotification/>}
+            <IonImg src={"/images/stages.jpeg"} className="img"/>
+            {authentication.authenticatedUser &&
+                authentication.role === "ROLE_ADMIN" && <AddStageButton/>}
+            <StageList stages={stagesContext.stages}/>
         </>
-    )
-}
+    );
+};
 
-export default StagePageContent;
+export default StagesPageContent;

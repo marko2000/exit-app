@@ -11,13 +11,13 @@ const TicketsPageContent: React.FC = () => {
     return (
         <>
             {error && <ErrorNotification/>}
-            <IonImg src={"/images/tickets.jpeg"} className="imgTop"></IonImg>
-            <IonGrid className="ticketsGrid">
+            <IonImg src={"/images/tickets.jpeg"} className="img-top"></IonImg>
+            <IonGrid className="tickets-grid">
                 <IonRow>
-                    <IonCol className="accordionGroup">
+                    <IonCol className="accordion-group">
                         <AvailableTicketsAccordion/>
                     </IonCol>
-                    <IonCol className="sideTickets">
+                    <IonCol className="side-tickets">
                         <CartCard/>
                     </IonCol>
                 </IonRow>

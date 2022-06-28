@@ -8,9 +8,9 @@ import Menu from "./components/navigation/Menu";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import StagesPage from "./pages/StagesPage";
-import AddStage from "./components/stage/admin/AddStage";
+import AddStageButton from "./components/stage/admin/AddStageButton";
 import PerformersPage from "./pages/PerformersPage";
-import UpdatePerformerForm from "./components/performer/admin/UpdatePerformerCard";
+import UpdatePerformerCard from "./components/performer/admin/UpdatePerformerCard";
 import EventsPage from "./pages/event/EventsPage";
 import AddEventPage from "./pages/event/AddEventPage";
 import Tickets from "./pages/Tickets";
@@ -60,10 +60,10 @@ const App: React.FC = () => (
                                 <Route exact path="/tickets" component={Tickets} />
                             </>
                         </RequiredVisitorAuthentication>
-                        <Route exact path="/stages/add" component={AddStage}/>
+                        <Route exact path="/stages/add" component={AddStageButton}/>
                         <Route exact path="/events/add" component={AddEventPage}/>
-                        <Route exact path="/performers/update/:id" component={UpdatePerformerForm}/>
-                        <Route exact path="/events/update/:id" component={UpdatePerformerForm}/>
+                        <Route exact path="/performers/update/:id" component={UpdatePerformerCard}/>
+                        <Route exact path="/events/update/:id" component={UpdatePerformerCard}/>
                     </IonRouterOutlet>
                 </IonReactRouter>
             </ErrorProvider>

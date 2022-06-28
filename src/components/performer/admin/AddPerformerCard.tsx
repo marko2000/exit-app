@@ -64,13 +64,13 @@ const AddPerformerModal = () => {
 
     return (
         <IonCard>
-            <IonCardTitle className="addPerformerTitle">
+            <IonCardTitle className="add-performer-title">
                 <IonToolbar color="grey">Add performer</IonToolbar>
             </IonCardTitle>
             <IonCardContent>
                 <IonGrid>
                     <IonRow>
-                        <IonCol className="addPerformerCol">
+                        <IonCol className="add-performer-col">
                             <IonItem>
                                 <IonLabel position="floating">Performer name:</IonLabel>
                                 <IonInput
@@ -114,7 +114,7 @@ const AddPerformerModal = () => {
                                 ></IonInput>
                             </IonItem>
 
-                            <IonItem className="addPerformerImg">
+                            <IonItem className="add-performer-img">
                                 <IonLabel position="floating">Image:</IonLabel>
                                 <IonInput
                                     type="text"
@@ -128,7 +128,7 @@ const AddPerformerModal = () => {
                                 type="submit"
                                 onClick={addPerformer}
                                 color="grey"
-                                className="addPerformerCard"
+                                className="add-performer-card"
                             >
                                 Add performer
                             </IonButton>
@@ -137,7 +137,7 @@ const AddPerformerModal = () => {
                                 type="submit"
                                 onClick={() => history.goBack()}
                                 color="grey"
-                                className="addPerformerCard"
+                                className="add-performer-card"
                                 id="updatePerformerButton"
                             >
                                 Cancel adding

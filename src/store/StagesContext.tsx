@@ -1,16 +1,14 @@
 import React, {createContext, useContext, useState} from "react";
-import axios from "axios";
 import {useAuthentication} from "./AuthenticationContext";
 import Stage from "../model/Stage";
-
-const apiUrl = "http://localhost:8080/api/stages";
+import {addStageApi, deleteStageApi, getAllStagesApi, updateStageApi} from "../api/stagesApi";
 
 type StagesContextType = {
     stages: Array<Stage>;
     selectedStage: Stage | null | undefined;
-    addStage: (stage: Stage) => void;
-    deleteStage: (stage: Stage) => void;
-    updateStage: (stage: Stage, id: number) => void;
+    addStage: (stage: Stage) => Promise<void> | null;
+    deleteStage: (stage: Stage) => Promise<void> | null;
+    updateStage: (stage: Stage, id: number) => Promise<void> | null;
     getAllStages: () => void;
     selectStage: (stage: Stage) => void;
 };
@@ -18,12 +16,9 @@ type StagesContextType = {
 const StagesContext = createContext<StagesContextType>({
     stages: [],
     selectedStage: null,
-    addStage: () => {
-    },
-    updateStage: () => {
-    },
-    deleteStage: () => {
-    },
+    addStage: () => null,
+    updateStage: () => null,
+    deleteStage: () => null,
     getAllStages: () => {
     },
     selectStage: () => {
@@ -37,7 +32,13 @@ export const useStages = () => {
 export const StagesProvider: React.FC = (props) => {
     const authentication = useAuthentication();
 
-    const [stages, setStages] = useState<Array<Stage>>();
+    const requestConfig: any = {
+        headers: {
+            'Authorization': authentication.accessToken as string,
+        }
+    }
+
+    const [stages, setStages] = useState<Array<Stage>>([]);
     const [selectedStage, setSelectedStage] = useState<Stage | null>();
 
     const selectStage = (stage: Stage) => {
@@ -45,74 +46,30 @@ export const StagesProvider: React.FC = (props) => {
     };
 
     const getAllStages = () => {
-        axios.get<Array<Stage>>(apiUrl)
-            .then((response) => {
-                console.log('Retrieved stages:')
-                console.log(response.data)
-                setStages(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-                setStages([])
-            });
+       getAllStagesApi(requestConfig)
+        .then(stages => {
+            setStages(stages);
+        })
+        .catch(error => {
+            setStages([]);
+        })
     };
 
-    const addStage = (stage: Stage) => {
-        axios
-            .post<Stage>(apiUrl, stage, {
-                headers: {
-                    Authorization:
-                        authentication.role + " " + authentication.accessToken,
-                },
-            })
-            .then((response) => {
-                console.log("Stage saved; \n" + response.data);
-                stages!.push(response.data);
-                setStages(stages);
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+    const addStage = (stage: Stage): Promise<void> => {
+        return addStageApi(stage, requestConfig)
+            .then(stage => setStages([...stages?.concat(stage)]))
     };
 
-    const updateStage = (stage: Stage, id: number) => {
-        axios
-            .put<Stage>(`${apiUrl}/${id}`, stage, {
-                headers: {
-                    Authorization:
-                        authentication.role + " " + authentication.accessToken,
-                },
+    const updateStage = (stage: Stage, id: number): Promise<void> => {
+        return updateStageApi(stage, id, requestConfig)
+            .then(updatedStage => {
+                setStages([...stages?.concat(updatedStage)])
             })
-            .then((response) => {
-                console.log("Updated stage: " + response.data);
-                let oldStage = stages?.find((stage) => stage.id === id);
-                if (!oldStage) {
-                    stages?.push(response.data);
-                } else {
-                    // updating fields manually
-                }
-                setStages(stages);
-            })
-            .catch((e) => {
-                console.log(e);
-            });
     };
 
     const deleteStage = (stage: Stage) => {
-        axios
-            .delete<Stage>(`${apiUrl}/${stage.id}`, {
-                headers: {
-                    Authorization:
-                        authentication.role + " " + authentication.accessToken,
-                },
-            })
-            .then((response) => {
-                console.log(response.data);
-                setStages(stages?.filter((stage) => stage.id !== response.data.id));
-            })
-            .catch((e) => {
-                console.log(e);
-            });
+        return deleteStageApi(stage, requestConfig)
+            .then(deletedStage => setStages(stages?.filter(stage => stage.id !== deletedStage.id)))
     };
 
     const context: StagesContextType = {

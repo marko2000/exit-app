@@ -1,53 +1,42 @@
-import React, { useState } from "react";
-import {
-  IonButton,
-  IonCol,
-  IonGrid,
-  IonIcon,
-  IonModal,
-  IonRow,
-} from "@ionic/react";
-import { closeCircleOutline, create, trash } from "ionicons/icons";
+import React from "react";
+import {IonButton, IonCol, IonGrid, IonIcon, IonRow,} from "@ionic/react";
+import {create, trash} from "ionicons/icons";
 import Stage from "../../../model/Stage";
-import { useStages } from "../../../store/StagesContext"
-import UpdateStageForm from "./UpdateStageForm";
+import {useStages} from "../../../store/StagesContext";
+import {useHistory} from "react-router-dom";
+import {useError} from "../../../store/ErrorContext";
 
 const PerformerCardAdminControls: React.FC<{
   stage: Stage;
 }> = ({ stage }) => {
-  const [showModalUpdate, setShowModalUpdate] = useState(false);
 
   const stagesContext = useStages();
+  const history = useHistory();
+  const {addError} = useError()
+
 
   return (
     <IonGrid>
-        <IonCol>
-          <IonButton
-            onClick={() => stagesContext.deleteStage(stage)}
-            expand={"block"}
-            color={"danger"}
-          >
-            <IonIcon icon={trash} className="table-icon" size="medium" />
-            Delete
-          </IonButton>
-        </IonCol>
-      <IonRow>
-        <IonModal
-          onIonModalDidDismiss={() => setShowModalUpdate(false)}
-          isOpen={showModalUpdate}
+      <IonCol>
+        <IonButton
+          onClick={() => {
+            stagesContext.deleteStage(stage)?.catch(() => addError("Could not delete stage. There is a reference to this stage by Event or Ticket."));
+          }}
+          expand={"block"}
+          color={"danger"}
+          id="adminControlsBtn"
         >
-          <IonButton
-            color="white"
-            size="large"
-            className="button-close-modal"
-            onClick={() => setShowModalUpdate(false)}
-          >
-            <IonIcon icon={closeCircleOutline} slot="end" color="grey" />
-          </IonButton>
-          <UpdateStageForm stage={stage} />
-        </IonModal>
+          <IonIcon icon={trash} className="table-icon" size="medium" />
+          Delete
+        </IonButton>
+      </IonCol>
+      <IonRow>
         <IonCol>
-          <IonButton onClick={() => setShowModalUpdate(true)} expand={"block"}>
+          <IonButton
+            id="adminControlsBtn"
+            onClick={() => history.push(`/stages/update/${stage.id}`)}
+            expand={"block"}
+          >
             <IonIcon
               icon={create}
               className="table-icon"

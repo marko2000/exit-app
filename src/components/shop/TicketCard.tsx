@@ -19,7 +19,7 @@ const TicketCard: React.FC<{ ticket: Ticket; stages: Array<Stage> }> = ({
       <IonGrid>
         <IonRow>
           <IonCol>
-            <IonImg src={ticket.image} className="ticketImage"></IonImg>
+            <IonImg src={ticket.image} className="ticket-image"></IonImg>
           </IonCol>
           <IonCol>
             <IonTitle id="ticketTitle">
