@@ -72,7 +72,7 @@ const AvailableTicketsAccordion: React.FC = () => {
                                         </IonSelect>
                                     </IonItem>
                                 </IonCol>
-                                <IonCol>
+                                <IonCol className="add-to-cart-btn">
                                     <IonButton
                                         color="red"
                                         size="default"

@@ -88,6 +88,43 @@
   font-size: 17px;
 }
 
+.ticket-price {
+  font-size: 15px;
+  color: red;
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  margin: 5px 0;
+}
+
+.currency-select {
+  border: 1px solid #fff;
+   --placeholder-color: #fff;
+   padding: 5px 10px;
+}
+
+.add-to-cart-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.remove-item-btn {
+  background-color: transparent;
+  padding: 0;
+}
+
+.conversion {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.conversion-value {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
 .accordion-group {
   margin-left: 20px;
   margin-right: 20px;

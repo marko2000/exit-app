@@ -7,7 +7,7 @@ import {
   IonIcon,
   IonItem,
   IonLabel,
-  IonList,
+  IonList
 } from "@ionic/react";
 import { cartOutline, removeCircleOutline } from "ionicons/icons";
 import { useTickets } from "../../store/TicketsContext";
@@ -30,6 +30,7 @@ const CartCard: React.FC = () => {
         (ticketsContext.newTickets[i].price * ticketsContext.newTickets[i].discount) /
           100;
     }
+    localStorage.setItem("amount", total.toString());
     return total;
   }
 
@@ -56,11 +57,10 @@ const CartCard: React.FC = () => {
             ticketsContext.newTickets.map((ticket) => (
               <IonItem key={ticket.id}>
                 {ticket.title}
-                <IonButton color="white" onClick={() => removeFromCart(ticket)}>
+                <IonButton color="red" onClick={() => removeFromCart(ticket)}>
                   <IonIcon
                     icon={removeCircleOutline}
-                    slot="end"
-                    color="red"
+                    slot="end" 
                   ></IonIcon>
                 </IonButton>
               </IonItem>

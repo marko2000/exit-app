@@ -6,8 +6,7 @@ import {
     IonPage,
     IonRow,
     IonSlide,
-    IonSlides,
-    IonTitle,
+    IonSlides
 } from "@ionic/react";
 import React from "react";
 import NavBar from "../components/navigation/NavBar";
@@ -40,9 +39,6 @@ const Home: React.FC = () => {
 
                     })}
                 </IonSlides>
-                <IonTitle color="grey" className="HomePageTitle">
-                    Exit App
-                </IonTitle>
                 <IonGrid className="HomePageText">
                     <IonRow>
                         <Counter/>

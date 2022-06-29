@@ -3,9 +3,7 @@ import {
   IonCol,
   IonGrid,
   IonImg,
-  IonLabel,
   IonRow,
-  IonTitle,
 } from "@ionic/react";
 import Ticket from "../../model/Ticket";
 import React from "react";
@@ -21,21 +19,19 @@ const TicketCard: React.FC<{ ticket: Ticket; stages: Array<Stage> }> = ({
           <IonCol>
             <IonImg src={ticket.image} className="ticket-image"></IonImg>
           </IonCol>
-          <IonCol>
-            <IonTitle id="ticketTitle">
+          <IonCol className="ticket-title">
               {ticket.title.substring(0, ticket.title.indexOf(" "))}
               <br />
               {ticket.title.substring(
                 ticket.title.indexOf(" "),
                 ticket.title.length
               )}
-            </IonTitle>
           </IonCol>
         </IonRow>
-        <IonRow>
-          <IonLabel color="red" id="ticketPrice">
+        <IonRow className="ticket-price">
+          {/* <IonLabel color="red" id="ticketPrice" className="ticket-price"> */}
             € {ticket.price} (+ booking free)
-          </IonLabel>
+          {/* </IonLabel> */}
         </IonRow>
 
       </IonGrid>
